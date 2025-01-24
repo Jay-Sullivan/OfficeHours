@@ -1,0 +1,16 @@
+---
+title: "homework"
+author: "Jay Sullivan"
+date: "2025-01-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Homework
+
+
+Week 1
