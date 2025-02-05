@@ -9,16 +9,36 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Step 01
+## Problem 01
 
 
 x <- 1.1
+
+
 a <- 2.2
+
+
 b <- 3.3
 
-z <- c(x,a,b)
+y <- (x^a^b)
 
-a. print(x^a^b)
-b. print((x^a)^b)
 
+w <- ((x^a)^b)
+
+
+m <- (3*x^3 + 2*x^2 + 1)
+
+
+z <- c(y,w,m)
+
+
+## Problem 02
+
+
+## Problem 03
+
+
+## Problem 04
+
+## Problem 05
 
