@@ -1,0 +1,24 @@
+---
+title: "Homework 04"
+author: "Jay Sullivan"
+date: "2025-02-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Step 01
+
+
+x <- 1.1
+a <- 2.2
+b <- 3.3
+
+z <- c(x,a,b)
+
+a. print(x^a^b)
+b. print((x^a)^b)
+
+

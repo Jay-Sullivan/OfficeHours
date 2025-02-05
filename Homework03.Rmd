@@ -1,0 +1,29 @@
+---
+title: "Homework 03"
+author: "Jay Sullivan"
+date: "2025-02-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Q1: $$/s{2}$$
+
+Q2:
+
+Q3:
+
+Q:4
+
+Q:5
+
+Q:6
+
+Q:7
+
+Q:8
+
+DataSet:
+
