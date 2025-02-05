@@ -47,3 +47,6 @@ queue <- append(queue, "Aphid", "ant") #F NOT WORKING
 
 #5
 
+Rvect <- 1:100
+
+print(Rvect)
