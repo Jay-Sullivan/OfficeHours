@@ -308,16 +308,53 @@ rep(x=new,times=test)</p>
 </div>
 <div id="notes-1" class="section level5">
 <h5>Notes:</h5>
+<p>Code for part A,B,C work to produce the expected outputs for the
+Second part of the assignment in Homework 4</p>
 </div>
 </div>
 <div id="problem-03" class="section level3">
 <h3>Problem 03</h3>
+<p>numberx &lt;- runif(1)<br />
+numbery &lt;- runif(1)<br />
+r &lt;- sqrt(numberx^2 + numbery^2)<br />
+zero &lt;- atan(numberx/numbery)</p>
+<p>final &lt;- c(r, zero)</p>
+<div id="notes-2" class="section level5">
+<h5>Notes:</h5>
+<p>For problem three this program generates two random numbers for the x
+and y coordinates respectively. Then the r and the zero are calculated
+to properly use the polar coordinates.</p>
+</div>
 </div>
 <div id="problem-04" class="section level3">
 <h3>Problem 04</h3>
+<p>queue &lt;- c(“Sheep”, “fox”, “owl”, “ant”)</p>
+<p>queue &lt;- append(queue,“Serpent”) #A<br />
+queue &lt;- (queue[! queue%in% c(“Sheep”)]) #B<br />
+queue &lt;- append(queue, “Donkey”, 0) #C<br />
+queue &lt;- (queue[! queue%in% c(“Serpent”)]) #D<br />
+queue &lt;- (queue[! queue%in% c(“owl”)]) #E<br />
+queue &lt;- append(queue, “Aphid”, after = which(queue == “ant”))
+#F<br />
+ap &lt;- which(queue == “Aphid”) #G.</p>
+<div id="notes-3" class="section level5">
+<h5>Notes:</h5>
+<p>The queue contains our original animal line while each step from a-g
+has its own queue line. Each line at the end has the # letter that
+corresponds with the step its solving.</p>
+</div>
 </div>
 <div id="problem-05" class="section level3">
 <h3>Problem 05</h3>
+<p>Rnumbers &lt;- c(1:100)</p>
+<p>Rvect &lt;- which(Rnumbers %%2 !=0 &amp; Rnumbers %%3 !=0 &amp;
+Rnumbers%%7 !=0)</p>
+<div id="notes-4" class="section level5">
+<h5>Notes:</h5>
+<p>Rnumbers is used to call the 1-100 list of numbers. It is then called
+into Rvect which checks to make sure that only numbers not divisible by
+2,3, and 7 can be added to Rvect.</p>
+</div>
 </div>
 
 

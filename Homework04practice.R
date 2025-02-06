@@ -43,10 +43,17 @@ queue <- (queue[! queue%in% c("Sheep")]) #B
 queue <- append(queue, "Donkey", 0) #C
 queue <- (queue[! queue%in% c("Serpent")]) #D
 queue <- (queue[! queue%in% c("owl")]) #E
-queue <- append(queue, "Aphid", "ant") #F NOT WORKING
+queue <- append(queue, "Aphid", after = which(queue == "ant")) #F
+ap <- which(queue == "Aphid")
+
 
 #5
 
-Rvect <- 1:100
+
+Rnumbers <- c(1:100)
+
+
+Rvect <- which(Rnumbers %%2 !=0 & Rnumbers %%3 !=0 & Rnumbers%%7 !=0)
 
 print(Rvect)
+

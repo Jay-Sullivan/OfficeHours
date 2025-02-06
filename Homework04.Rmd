@@ -52,14 +52,45 @@ rep(x=new,times=test)
 
 
 ##### Notes:
+Code for part A,B,C work to produce the expected outputs for the Second part of the assignment in Homework 4
 
 
 ### Problem 03
 
 
+numberx <- runif(1)   
+numbery <- runif(1)   
+r <- sqrt(numberx^2 + numbery^2)   
+zero <- atan(numberx/numbery)   
 
+final <- c(r, zero)
+
+##### Notes:
+For problem three this program generates two random numbers for the x and y coordinates respectively. Then the r and the zero are calculated to properly use the polar coordinates.
 
 ### Problem 04
 
+queue <- c("Sheep", "fox", "owl", "ant")   
+
+
+queue <- append(queue,"Serpent") #A   
+queue <- (queue[! queue%in% c("Sheep")]) #B   
+queue <- append(queue, "Donkey", 0) #C   
+queue <- (queue[! queue%in% c("Serpent")]) #D   
+queue <- (queue[! queue%in% c("owl")]) #E   
+queue <- append(queue, "Aphid", after = which(queue == "ant")) #F   
+ap <- which(queue == "Aphid") #G.   
+
+
+##### Notes:   
+The queue contains our original animal line while each step from a-g has its own queue line. Each line at the end has the # letter that corresponds with the step its solving.
+
+
 ### Problem 05
 
+Rnumbers <- c(1:100)   
+
+Rvect <- which(Rnumbers %%2 !=0 & Rnumbers %%3 !=0 & Rnumbers%%7 !=0)
+
+##### Notes:   
+Rnumbers is used to call the 1-100 list of numbers. It is then called into Rvect which checks to make sure that only numbers not divisible by 2,3, and 7 can be added to Rvect.
