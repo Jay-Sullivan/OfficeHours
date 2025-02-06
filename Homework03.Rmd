@@ -21,11 +21,11 @@ Note: \s{2,} is used to look for any white spaces that have more then 2 spaces
 
 #### Q2:
 ```plaintext
-Find: 
+Find: (\w+), (\w+), (.+)
 
-Replace:
+Replace: \2 \1 (\3)
 
-Note:
+Note: Each letters group is selected with the Find feature. The first letter group \1 and the second one, \2 are swapped while the third group has parenthesis placed around.
 ```
 
 #### Q3:
@@ -40,6 +40,14 @@ Note:
 
 #### Q:4
 
+```plaintext
+Find:
+
+Replace:
+
+Note:
+```
+
 #### Q:5
 
 #### Q:6
@@ -49,4 +57,26 @@ Note:
 #### Q:8
 
 #### DataSet:
+```plaintext
+
+Pathogen Correction
+Find: NA
+
+Replace: 1
+Note: Working on the proper issue.
+
+
+HostPlant Corrections
+Find: [#!*@&$%+)(^-]
+
+Replace: \1
+Note: Removes the issues except for _ which also removes it from words we want 
+
+
+Bee_Caste Corrections
+Find: (male)
+
+Replace: (drone)
+Note: Working on the real issue which is the spacing
+```
 
