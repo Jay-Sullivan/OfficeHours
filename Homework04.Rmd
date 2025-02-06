@@ -9,29 +9,57 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Problem 01
+### Problem 01   
 
 
-x <- 1.1   
-a <- 2.2   
-b <- 3.3   
+x <- 1.1  
+a <- 2.2  
+b <- 3.3  
 
 
-y <- (x^a^b)   
-w <- ((x^a)^b)   
+$$ \text{y <- (x^a^b)} $$
+$$ \text{w <- ((x^a)^b)} $$
+$$ \text{m <- (3*x^3 + 2*x^2 + 1)} $$
 
 
-m <- (3*x^3 + 2*x^2 + 1)   
-z <- c(y,w,m)   
+z <- c(y,w,m)
 
 
-## Problem 02
+##### Notes:
 
 
-## Problem 03
+We have our variables x, a, and b, being assigned various numbers.  
+Next we have y,w, and m being assigned equations.  
+Finally z has all the previous expression stored in it.  
 
 
-## Problem 04
+### Problem 02
 
-## Problem 05
+##### Part A   
+prob <- c(seq(1:8), seq(from=7, to=1))
+
+
+##### Part B
+test <- c(1:5)   
+rep(x=test,times=test)
+
+##### Part C
+
+
+new <- seq(from=5, to=1)   
+test2 <- c(5:1)   
+rep(x=new,times=test)   
+
+
+##### Notes:
+
+
+### Problem 03
+
+
+
+
+### Problem 04
+
+### Problem 05
 
