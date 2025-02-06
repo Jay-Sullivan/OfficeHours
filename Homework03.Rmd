@@ -9,7 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Q1: $$/s{2}$$
+Q1: 
+$$
+Find:\t+
+
+
+Replace: \1,
+$$
 
 Q2:
 
