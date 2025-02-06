@@ -8,104 +8,45 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-### Problems
-
-
-#### Q1: 
-
+## Problems   
+#### Q1   
 ```plaintext
-Find: \t+
+Find: \s{2,}
+
+Replace: ,
 
 
-Replace: \1,   
-
-
-Note:
+Note: \s{2,} is used to look for any white spaces that have more then 2 spaces
 ```
 
 #### Q2:
 ```plaintext
-Find:
+Find: 
 
 Replace:
 
 Note:
-
 ```
 
 #### Q3:
 
 ```plaintext
-Find:
+Find: 
 
 Replace:
 
 Note:
-
 ```
 
 #### Q:4
-```plaintext
-Find:
-
-Replace:
-
-Note:
-
-```
 
 #### Q:5
-```plaintext
-Find:
-
-Replace:
-
-Note:
-
-```
 
 #### Q:6
 
-```plaintext
-Find:
-
-Replace:
-
-Note:
-
-```
-
 #### Q:7
-
-```plaintext
-Find:
-
-Replace:
-
-Note:
-
-```
 
 #### Q:8
 
-```plaintext
-Find:
-
-Replace:
-
-Note:
-
-```
-
-#### BeeDataSet:
-
-```plaintext
-Find:
-
-Replace:
-
-Note:
-
-```
+#### DataSet:
 

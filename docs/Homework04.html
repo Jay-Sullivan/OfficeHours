@@ -272,83 +272,94 @@ $(document).ready(function () {
 </div>
 
 
+<p><br></p>
 <div id="problem-01" class="section level3">
 <h3>Problem 01</h3>
-<p>x &lt;- 1.1<br />
-a &lt;- 2.2<br />
-b &lt;- 3.3</p>
-<p><span class="math display">\[ \text{y &lt;- (x^a^b)} \]</span> <span
-class="math display">\[ \text{w &lt;- ((x^a)^b)} \]</span> <span
-class="math display">\[ \text{m &lt;- (3*x^3 + 2*x^2 + 1)} \]</span></p>
-<p>z &lt;- c(y,w,m)</p>
-<div id="notes" class="section level5">
-<h5>Notes:</h5>
+<pre class="plaintext"><code>x &lt;- 1.1  
+a &lt;- 2.2  
+b &lt;- 3.3  
+
+
+y &lt;- (x^a^b)
+w &lt;- ((x^a)^b)
+m &lt;- (3*x^3 + 2*x^2 + 1)
+
+
+z &lt;- c(y,w,m)</code></pre>
+<div id="notes" class="section level4">
+<h4>Notes:</h4>
 <p>We have our variables x, a, and b, being assigned various
 numbers.<br />
 Next we have y,w, and m being assigned equations.<br />
 Finally z has all the previous expression stored in it.</p>
+<p><br> <br> <br></p>
 </div>
 </div>
 <div id="problem-02" class="section level3">
 <h3>Problem 02</h3>
 <div id="part-a" class="section level5">
 <h5>Part A</h5>
-<p>prob &lt;- c(seq(1:8), seq(from=7, to=1))</p>
+<pre class="plaintext"><code>prob &lt;- c(seq(1:8), seq(from=7, to=1))</code></pre>
 </div>
 <div id="part-b" class="section level5">
 <h5>Part B</h5>
-<p>test &lt;- c(1:5)<br />
-rep(x=test,times=test)</p>
+<pre class="plaintext"><code>test &lt;- c(1:5)   
+rep(x=test,times=test)</code></pre>
 </div>
 <div id="part-c" class="section level5">
 <h5>Part C</h5>
-<p>new &lt;- seq(from=5, to=1)<br />
-test2 &lt;- c(5:1)<br />
-rep(x=new,times=test)</p>
+<pre class="plaintext"><code>new &lt;- seq(from=5, to=1)   
+test2 &lt;- c(5:1)   
+rep(x=new,times=test)   </code></pre>
 </div>
 <div id="notes-1" class="section level5">
 <h5>Notes:</h5>
 <p>Code for part A,B,C work to produce the expected outputs for the
 Second part of the assignment in Homework 4</p>
+<p><br> <br> <br></p>
 </div>
 </div>
 <div id="problem-03" class="section level3">
 <h3>Problem 03</h3>
-<p>numberx &lt;- runif(1)<br />
-numbery &lt;- runif(1)<br />
-r &lt;- sqrt(numberx^2 + numbery^2)<br />
-zero &lt;- atan(numberx/numbery)</p>
-<p>final &lt;- c(r, zero)</p>
+<pre class="plaintext"><code>numberx &lt;- runif(1)   
+numbery &lt;- runif(1)   
+r &lt;- sqrt(numberx^2 + numbery^2)   
+zero &lt;- atan(numberx/numbery)   
+
+final &lt;- c(r, zero)</code></pre>
 <div id="notes-2" class="section level5">
 <h5>Notes:</h5>
 <p>For problem three this program generates two random numbers for the x
 and y coordinates respectively. Then the r and the zero are calculated
 to properly use the polar coordinates.</p>
+<p><br> <br> <br></p>
 </div>
 </div>
 <div id="problem-04" class="section level3">
 <h3>Problem 04</h3>
-<p>queue &lt;- c(“Sheep”, “fox”, “owl”, “ant”)</p>
-<p>queue &lt;- append(queue,“Serpent”) #A<br />
-queue &lt;- (queue[! queue%in% c(“Sheep”)]) #B<br />
-queue &lt;- append(queue, “Donkey”, 0) #C<br />
-queue &lt;- (queue[! queue%in% c(“Serpent”)]) #D<br />
-queue &lt;- (queue[! queue%in% c(“owl”)]) #E<br />
-queue &lt;- append(queue, “Aphid”, after = which(queue == “ant”))
-#F<br />
-ap &lt;- which(queue == “Aphid”) #G.</p>
+<pre class="plaintext"><code>queue &lt;- c(&quot;Sheep&quot;, &quot;fox&quot;, &quot;owl&quot;, &quot;ant&quot;)   
+
+
+queue &lt;- append(queue,&quot;Serpent&quot;) #A   
+queue &lt;- (queue[! queue%in% c(&quot;Sheep&quot;)]) #B   
+queue &lt;- append(queue, &quot;Donkey&quot;, 0) #C   
+queue &lt;- (queue[! queue%in% c(&quot;Serpent&quot;)]) #D   
+queue &lt;- (queue[! queue%in% c(&quot;owl&quot;)]) #E   
+queue &lt;- append(queue, &quot;Aphid&quot;, after = which(queue == &quot;ant&quot;)) #F   
+ap &lt;- which(queue == &quot;Aphid&quot;) #G.   </code></pre>
 <div id="notes-3" class="section level5">
 <h5>Notes:</h5>
-<p>The queue contains our original animal line while each step from a-g
+<p>The queue contains our original animal line while each step from A-G
 has its own queue line. Each line at the end has the # letter that
 corresponds with the step its solving.</p>
+<p><br> <br> <br></p>
 </div>
 </div>
 <div id="problem-05" class="section level3">
 <h3>Problem 05</h3>
-<p>Rnumbers &lt;- c(1:100)</p>
-<p>Rvect &lt;- which(Rnumbers %%2 !=0 &amp; Rnumbers %%3 !=0 &amp;
-Rnumbers%%7 !=0)</p>
+<pre class="plaintext"><code>Rnumbers &lt;- c(1:100)   
+
+Rvect &lt;- which(Rnumbers %%2 !=0 &amp; Rnumbers %%3 !=0 &amp; Rnumbers%%7 !=0)</code></pre>
 <div id="notes-4" class="section level5">
 <h5>Notes:</h5>
 <p>Rnumbers is used to call the 1-100 list of numbers. It is then called

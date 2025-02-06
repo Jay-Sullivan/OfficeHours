@@ -8,68 +8,76 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+<br>
+
 
 ### Problem 01   
-
-
+```plaintext
 x <- 1.1  
 a <- 2.2  
 b <- 3.3  
 
 
-$$ \text{y <- (x^a^b)} $$
-$$ \text{w <- ((x^a)^b)} $$
-$$ \text{m <- (3*x^3 + 2*x^2 + 1)} $$
+y <- (x^a^b)
+w <- ((x^a)^b)
+m <- (3*x^3 + 2*x^2 + 1)
 
 
 z <- c(y,w,m)
-
-
-##### Notes:
-
-
+```
+#### Notes:
 We have our variables x, a, and b, being assigned various numbers.  
 Next we have y,w, and m being assigned equations.  
 Finally z has all the previous expression stored in it.  
 
+<br>
+<br>
+<br>
 
 ### Problem 02
 
 ##### Part A   
+```plaintext
 prob <- c(seq(1:8), seq(from=7, to=1))
-
+```
 
 ##### Part B
+```plaintext
 test <- c(1:5)   
 rep(x=test,times=test)
-
+```
 ##### Part C
-
-
+```plaintext
 new <- seq(from=5, to=1)   
 test2 <- c(5:1)   
 rep(x=new,times=test)   
-
+```
 
 ##### Notes:
 Code for part A,B,C work to produce the expected outputs for the Second part of the assignment in Homework 4
 
+<br>
+<br>
+<br>
 
 ### Problem 03
-
-
+```plaintext
 numberx <- runif(1)   
 numbery <- runif(1)   
 r <- sqrt(numberx^2 + numbery^2)   
 zero <- atan(numberx/numbery)   
 
 final <- c(r, zero)
-
+```
 ##### Notes:
 For problem three this program generates two random numbers for the x and y coordinates respectively. Then the r and the zero are calculated to properly use the polar coordinates.
 
-### Problem 04
+<br>
+<br>
+<br>
 
+### Problem 04
+```plaintext
 queue <- c("Sheep", "fox", "owl", "ant")   
 
 
@@ -80,17 +88,19 @@ queue <- (queue[! queue%in% c("Serpent")]) #D
 queue <- (queue[! queue%in% c("owl")]) #E   
 queue <- append(queue, "Aphid", after = which(queue == "ant")) #F   
 ap <- which(queue == "Aphid") #G.   
-
-
+```
 ##### Notes:   
-The queue contains our original animal line while each step from a-g has its own queue line. Each line at the end has the # letter that corresponds with the step its solving.
+The queue contains our original animal line while each step from A-G has its own queue line. Each line at the end has the # letter that corresponds with the step its solving.
 
+<br>
+<br>
+<br>
 
 ### Problem 05
-
+```plaintext
 Rnumbers <- c(1:100)   
 
 Rvect <- which(Rnumbers %%2 !=0 & Rnumbers %%3 !=0 & Rnumbers%%7 !=0)
-
+```
 ##### Notes:   
 Rnumbers is used to call the 1-100 list of numbers. It is then called into Rvect which checks to make sure that only numbers not divisible by 2,3, and 7 can be added to Rvect.
