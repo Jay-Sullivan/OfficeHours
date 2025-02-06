@@ -9,27 +9,103 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Q1: 
-$$
-Find:\t+
+### Problems
 
 
-Replace: \1,
-$$
+#### Q1: 
 
-Q2:
+```plaintext
+Find: \t+
 
-Q3:
 
-Q:4
+Replace: \1,   
 
-Q:5
 
-Q:6
+Note:
+```
 
-Q:7
+#### Q2:
+```plaintext
+Find:
 
-Q:8
+Replace:
 
-DataSet:
+Note:
+
+```
+
+#### Q3:
+
+```plaintext
+Find:
+
+Replace:
+
+Note:
+
+```
+
+#### Q:4
+```plaintext
+Find:
+
+Replace:
+
+Note:
+
+```
+
+#### Q:5
+```plaintext
+Find:
+
+Replace:
+
+Note:
+
+```
+
+#### Q:6
+
+```plaintext
+Find:
+
+Replace:
+
+Note:
+
+```
+
+#### Q:7
+
+```plaintext
+Find:
+
+Replace:
+
+Note:
+
+```
+
+#### Q:8
+
+```plaintext
+Find:
+
+Replace:
+
+Note:
+
+```
+
+#### BeeDataSet:
+
+```plaintext
+Find:
+
+Replace:
+
+Note:
+
+```
 
