@@ -9,3 +9,7 @@ navbar:
       href: about.html
     - text: "Homework"
       href: homework.html
+output:
+  html_document:
+    includes:
+      in_header: header.html
