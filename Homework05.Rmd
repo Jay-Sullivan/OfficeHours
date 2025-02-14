@@ -1,0 +1,41 @@
+---
+title: "Homework05"
+author: "Jay Sullivan"
+date: "2025-02-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Problems
+#### Q1
+```plaintext
+n_dims <- sample(3:10,1,replace = TRUE)
+# single random integer between 3 and 10
+# different function for integer values, whole numbers
+# replace true means re sample it the number changes
+
+n_dims2 <- 1:n_dims^2
+# create a vector of consecutive integers from 1 to n_dims^2
+
+
+n_dims3 <- sample(x=n_dims2)
+# use sample function to randomly reshuffle values
+
+m <- matrix(data=n_dims3,nrow=)
+# create a square matrix with these elements
+
+print(m)
+# print out the matrix
+```
+
+
+
+#### Q2   
+
+
+#### Q3   
+
