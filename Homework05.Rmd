@@ -30,12 +30,69 @@ m <- matrix(data=n_dims3,nrow=)
 
 print(m)
 # print out the matrix
+# Notes: 
+
+tmatrix <- t(m)
+# find a function in r to transpose matrix
+
+print(tmatrix)
+# print it out again and note how it has changed
+
+
+x1 <- 
+y1 <-
+# Sum and mean of 1st row
+
+x2 <-
+y2 <-
+# Sum and mean of last row
+# calculate the sum and the mean of the elements in 1st and last row
+
+
+p <-
+# eigen() function in matrix
+
+
+v <-
+# $values and $vectors in output
+# kind of number: 
+
+
+t <-
+# typeof() function to figure out type
 ```
 
 
 
 #### Q2   
+```plaintext
+
+
+# my_matrix
+
+#my_logical
+
+#my_letters
+
+#newList
+#typeof()
+#combine
+#data type?
+
+
+```
 
 
 #### Q3   
+```plaintext
+
+#my_units
+
+#my_letters
+
+#first variable
+```    
+
+
+[Return Home](index.html)
 

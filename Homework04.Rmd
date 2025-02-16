@@ -103,4 +103,7 @@ Rnumbers <- c(1:100)
 Rvect <- which(Rnumbers %%2 !=0 & Rnumbers %%3 !=0 & Rnumbers%%7 !=0)
 ```
 ##### Notes:   
-Rnumbers is used to call the 1-100 list of numbers. It is then called into Rvect which checks to make sure that only numbers not divisible by 2,3, and 7 can be added to Rvect.
+Rnumbers is used to call the 1-100 list of numbers. It is then called into Rvect which checks to make sure that only numbers not divisible by 2,3, and 7 can be added to Rvect.   
+
+
+[Return Home](index.html)

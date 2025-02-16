@@ -20,19 +20,26 @@ m <- matrix(data=n_dims3,nrow=)
 print(m)
 #print out the matrix
 
+tmatrix <- t(m)
 
 # find a function in r to transpose the matrix
 
-print()
-
+print(tmatrix)
 # print it out again and note how it has changed
-# Notes:
+# Notes: Matrix turns into two rows
 
-l <- wh
+x <- sum(tmatrix)
+y <- mean(tmatrix)
 
 # calculate the sum and the mean of the elements in the first row and then the last row.
 
 # EIGEN --> ?eigen()
+
+
+# Lok carefully at the elements of $ values
+
+#dig in with the typeof() function
+
 
 ############## 2 create a list with certain elements
 
