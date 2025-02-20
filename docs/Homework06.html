@@ -11,9 +11,9 @@
 
 <meta name="author" content="Jay Sullivan" />
 
-<meta name="date" content="2025-01-24" />
+<meta name="date" content="2025-02-19" />
 
-<title>Homework</title>
+<title>Homework06</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -266,28 +266,39 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Homework</h1>
+<h1 class="title toc-ignore">Homework06</h1>
 <h4 class="author">Jay Sullivan</h4>
-<h4 class="date">2025-01-24</h4>
+<h4 class="date">2025-02-19</h4>
 
 </div>
 
 
-<div id="links-to-my-homeworks" class="section level5">
-<h5>Links to my homeworks</h5>
-<p><a href="Homework03.html">Homework 3</a></p>
-<p><a href="Homework04.html">Homework 4</a></p>
-<p><a href="Homework05.html">Homework 5</a></p>
-<p><a href="Homework06.html">Homework 6</a></p>
-<p><a href="header.html">TestLink</a></p>
-<p>[Experimental Designs]</p>
-<p>[Homework 7]</p>
-<p>[Homework 8]</p>
-<p>[Homework 9]</p>
-<p>[Homework 10]</p>
-<p>[Homework 11]</p>
-<p>[Homework 12]</p>
-</div>
+<p>#Creating Fake Data Sets To Explore Hypotheses</p>
+<pre class="plaintext"><code>
+spema &lt;- sample(26:80,20, replace = TRUE)
+spele &lt;- sample(24:30, 12, replace = TRUE)
+
+#spema follows the random distribution of species 1 skull size
+# The lowest skull size is 26 while the highest it can be is 80. There are 20 specimens
+#spele follows the random distribution of species 2 skull size
+# The lowest skull size is 10 while the highest it can be is 32. There are 20 specimens</code></pre>
+<p>###ANOVA TEST</p>
+<pre class="plaintext"><code>ANOVA_HM2 &lt;- aov(spema~spele)
+summary(ANOVA_HM2)
+
+# here is the code that assigns the anova test to the variable ANOVA_HM2</code></pre>
+<p>###For Loop Function</p>
+<pre class="plaintext"><code>m &lt;- c(80,85,90,95,100)
+for (i in 1:length(m)) {
+  spema &lt;- sample(26:m[i],200, replace = TRUE)
+  ANOVA_HM2 &lt;- aov(spema~spele)
+  x &lt;- summary(ANOVA_HM2)
+  print(m[i])
+  print(x[[1]]$`Pr(&gt;F)`)
+}
+# m is used to store the loops of the increasing value
+# The for loop stars with the length of m, every time it loops the value of my spema&#39;s higher end is increased by 5 mm every loop.
+# After the loop is calculated the value that is changed is printed followed by the anova test value. This loop continues until it hits the final length of m</code></pre>
 
 
 

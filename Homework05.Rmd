@@ -67,8 +67,10 @@ t <-
 #### Q2   
 ```plaintext
 
-
+my_matrix <- matrix(runif(16), nrow = 4)
 # my_matrix
+
+
 
 #my_logical
 

@@ -21,7 +21,6 @@ print(m)
 #print out the matrix
 
 tmatrix <- t(m)
-
 # find a function in r to transpose the matrix
 
 print(tmatrix)
@@ -30,13 +29,13 @@ print(tmatrix)
 
 x <- sum(tmatrix)
 y <- mean(tmatrix)
-
+# XXXXXXXXFIX
 # calculate the sum and the mean of the elements in the first row and then the last row.
 
 # EIGEN --> ?eigen()
+answer <- eigen(tmatrix)
 
-
-# Lok carefully at the elements of $ values
+# Look carefully at the elements of $ values
 
 #dig in with the typeof() function
 
@@ -44,10 +43,19 @@ y <- mean(tmatrix)
 ############## 2 create a list with certain elements
 
 # my_matrix 4X4 matrix filled with random uniform values
+my_matrix <- matrix(runif(16), nrow = 4)
+
+
+
 # difference is string before hand and putting into matrix, like creating variable
 val <- sample(1:4,4,replace = TRUE)
 my_matrix <- matrix(data=val,nrow=)
 print(my_matrix)
 
 ############### 3 Create a data frame with the two variables (=columns) and 26 cases (=rows) below:
+my_unis <- sample(0:10,26,replace = TRUE)
 
+my_letters <- x
+# second variable with 26 capital letters random order
+
+#First variable single ...

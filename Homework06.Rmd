@@ -1,0 +1,45 @@
+---
+title: "Homework06"
+author: "Jay Sullivan"
+date: "2025-02-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Creating Fake Data Sets To Explore Hypotheses
+
+```plaintext
+
+spema <- sample(26:80,20, replace = TRUE)
+spele <- sample(24:30, 12, replace = TRUE)
+
+#spema follows the random distribution of species 1 skull size
+# The lowest skull size is 26 while the highest it can be is 80. There are 20 specimens
+#spele follows the random distribution of species 2 skull size
+# The lowest skull size is 10 while the highest it can be is 32. There are 20 specimens
+```
+
+###ANOVA TEST
+```plaintext
+ANOVA_HM2 <- aov(spema~spele)
+summary(ANOVA_HM2)
+
+# here is the code that assigns the anova test to the variable ANOVA_HM2
+```   
+###For Loop Function
+```plaintext
+m <- c(80,85,90,95,100)
+for (i in 1:length(m)) {
+  spema <- sample(26:m[i],200, replace = TRUE)
+  ANOVA_HM2 <- aov(spema~spele)
+  x <- summary(ANOVA_HM2)
+  print(m[i])
+  print(x[[1]]$`Pr(>F)`)
+}
+# m is used to store the loops of the increasing value
+# The for loop stars with the length of m, every time it loops the value of my spema's higher end is increased by 5 mm every loop.
+# After the loop is calculated the value that is changed is printed followed by the anova test value. This loop continues until it hits the final length of m
+```
+

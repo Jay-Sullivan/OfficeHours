@@ -21,9 +21,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [Homework 5](Homework05.html)
 
+
+[Homework 6](Homework06.html)
+
+
+
 [TestLink](header.html)
 
-[Homework 6]
 
 [Experimental Designs]
 
