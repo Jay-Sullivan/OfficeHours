@@ -11,9 +11,9 @@
 
 <meta name="author" content="Jay Sullivan" />
 
-<meta name="date" content="2025-01-24" />
+<meta name="date" content="2025-02-26" />
 
-<title>Homework</title>
+<title>Homework07</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -266,26 +266,81 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Homework</h1>
+<h1 class="title toc-ignore">Homework07</h1>
 <h4 class="author">Jay Sullivan</h4>
-<h4 class="date">2025-01-24</h4>
+<h4 class="date">2025-02-26</h4>
 
 </div>
 
 
-<div id="links-to-my-homeworks" class="section level5">
-<h5>Links to my homeworks</h5>
-<p><a href="Homework03.html">Homework 3</a></p>
-<p><a href="Homework04.html">Homework 4</a></p>
-<p><a href="Homework05.html">Homework 5</a></p>
-<p><a href="Homework06.html">Homework 6</a></p>
-<p><a href="Homework07.html">Homework 7</a></p>
-<p>[Homework 8]</p>
-<p>[Homework 9]</p>
-<p>[Homework 10]</p>
-<p>[Homework 11]</p>
-<p>[Homework 12]</p>
-<p>[Experimental Designs]</p>
+<div id="data-manipulations-using-the-dplyr-package"
+class="section level1">
+<h1>Data manipulations using the <code>dplyr</code> package</h1>
+<div id="section" class="section level3">
+<h3>1</h3>
+<pre class="text"><code>There are 150 observations and 5 variables in the data set.
+
+We can use data(iris) to find this</code></pre>
+</div>
+<div id="section-1" class="section level3">
+<h3>2</h3>
+<pre class="text"><code>Using the code below I found that iris1 has 56 observations with 5 variables.
+
+iris1 &lt;- iris%&gt;%
+  filter(Species == &quot;virginica&quot;|Species == &quot;versicolor&quot;, Sepal.Length &gt; 6, Sepal.Width &gt; 2.5)
+</code></pre>
+</div>
+<div id="section-2" class="section level3">
+<h3>3</h3>
+<pre class="text"><code>Using the code below I found that iris 2 has 56 observations with 3 variables.
+
+iris2 &lt;- iris1%&gt;%
+  select(Species,Sepal.Length, Sepal.Width)
+  </code></pre>
+</div>
+<div id="section-3" class="section level3">
+<h3>4</h3>
+<pre class="text"><code>Create an iris3 data frame from iris2 that orders the observations from largest to smallest sepal length. Show the first 6 rows of this data set.
+
+iris3 &lt;- iris2%&gt;%
+  arrange(desc(Sepal.Length))
+
+Now to show the first 6 rows !!!!!
+</code></pre>
+</div>
+<div id="section-4" class="section level3">
+<h3>5</h3>
+<pre class="text"><code>Create an iris4 data frame from iris3 that creates a column with a sepal area (length * width) value for each observation. How many observations and variables are in the data set?
+
+There are X observations and X variables in the data set.
+
+
+</code></pre>
+</div>
+<div id="section-5" class="section level3">
+<h3>6</h3>
+<pre class="text"><code>Create iris5 that calculates the average sepal length, the average sepal width, and the sample size of the entire iris4 data frame and print iris5.
+
+
+</code></pre>
+</div>
+<div id="section-6" class="section level3">
+<h3>7</h3>
+<pre class="text"><code>Finally, create iris6 that calculates the average sepal length, the average sepal width, and the sample size for each species of in the iris4 data frame and print iris6.
+
+</code></pre>
+</div>
+<div id="section-7" class="section level3">
+<h3>8 !!!!!</h3>
+<pre class="text"><code>Asks you to redo everything with pips statement, just start with pip statements or chain together</code></pre>
+</div>
+<div id="section-8" class="section level3">
+<h3>9</h3>
+<pre class="text"><code>Create a ‘longer’ data frame using the original iris data set with three columns named “Species”, “Measure”, “Value”. The column “Species” will retain the species names of the data set. The column “Measure” will include whether the value corresponds to Sepal.Length, Sepal.Width, Petal.Length, or Petal.Width and the column “Value” will include the numerical values of those measurements.
+
+
+</code></pre>
+</div>
 </div>
 
 

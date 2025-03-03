@@ -25,13 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 [Homework 6](Homework06.html)
 
 
-
-[TestLink](header.html)
-
-
-[Experimental Designs]
-
-[Homework 7]
+[Homework 7](Homework07.html)
 
 [Homework 8]
 
@@ -42,3 +36,6 @@ knitr::opts_chunk$set(echo = TRUE)
 [Homework 11]
 
 [Homework 12]
+
+[Experimental Designs]
+
