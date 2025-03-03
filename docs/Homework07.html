@@ -305,22 +305,29 @@ iris2 &lt;- iris1%&gt;%
 iris3 &lt;- iris2%&gt;%
   arrange(desc(Sepal.Length))
 
-Now to show the first 6 rows !!!!!
+Now to show the first 6 rows
+
+head(iris3)
 </code></pre>
 </div>
 <div id="section-4" class="section level3">
 <h3>5</h3>
 <pre class="text"><code>Create an iris4 data frame from iris3 that creates a column with a sepal area (length * width) value for each observation. How many observations and variables are in the data set?
 
-There are X observations and X variables in the data set.
+There are 56 observations and 4 variables in the data set.
 
-
+iris4 &lt;- iris3%&gt;%
+  mutate(Sepal.area = (Sepal.Length * Sepal.Width))
 </code></pre>
 </div>
 <div id="section-5" class="section level3">
 <h3>6</h3>
 <pre class="text"><code>Create iris5 that calculates the average sepal length, the average sepal width, and the sample size of the entire iris4 data frame and print iris5.
 
+iris5 &lt;- iris4%&gt;%
+  summarize(meanLength = mean(Sepal.Length, na.rm=TRUE),meanWidth = mean(Sepal.Width, na.rm = TRUE), SampleSize = n())
+
+print(iris5)
 
 </code></pre>
 </div>
@@ -328,11 +335,25 @@ There are X observations and X variables in the data set.
 <h3>7</h3>
 <pre class="text"><code>Finally, create iris6 that calculates the average sepal length, the average sepal width, and the sample size for each species of in the iris4 data frame and print iris6.
 
+iris6 &lt;- iris4%&gt;%
+  group_by(Species)%&gt;%
+  summarize(meanLength = mean(Sepal.Length, na.rm=TRUE),meanWidth = mean(Sepal.Width, na.rm = TRUE), SampleSize = n())
+
+print(iris6)
 </code></pre>
 </div>
 <div id="section-7" class="section level3">
 <h3>8 !!!!!</h3>
-<pre class="text"><code>Asks you to redo everything with pips statement, just start with pip statements or chain together</code></pre>
+<pre class="text"><code>Asks you to redo everything with pips statement, just start with pip statements or chain together
+
+irisFinal &lt;- iris%&gt;%
+  filter(Species == &quot;virginica&quot;|Species == &quot;versicolor&quot;, Sepal.Length &gt; 6, Sepal.Width &gt; 2.5)%&gt;%
+  select(Species,Sepal.Length, Sepal.Width)%&gt;%
+  arrange(desc(Sepal.Length))%&gt;%
+  mutate(Sepal.area = (Sepal.Length * Sepal.Width))%&gt;%
+  group_by(Species)%&gt;%
+  summarize(meanLength = mean(Sepal.Length, na.rm=TRUE),meanWidth = mean(Sepal.Width, na.rm = TRUE), SampleSize = n())
+</code></pre>
 </div>
 <div id="section-8" class="section level3">
 <h3>9</h3>
