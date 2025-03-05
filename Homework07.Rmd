@@ -107,9 +107,8 @@ Create a ‘longer’ data frame using the original iris data set with three col
 
 longer <- iris%>%
   group_by(Species)%>%
-  select(Species,Sepal.Length)%>%
-  mutate(Measure = 'Sepal Length')%>%
-  mutate(Value = Sepal.Length)%>%
-  reframe(Species,Measure,Value)
+  pivot_longer(cols= 1:4,
+               names_to = "Measure",
+               values_to= "Value",)
 ```
 

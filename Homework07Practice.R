@@ -61,4 +61,14 @@ longer <- iris%>%
   mutate(Measure = 'Sepal Length')%>%
   mutate(Value = Sepal.Length)%>%
   reframe(Species,Measure,Value)
+#pivot longer
 
+longer <- iris%>%
+  select(Species,Sepal.Length,Sepal.Width,Petal.Length,Petal.Width)%>%
+  pivot_longer(cols= Sepal.Length:Sepal.Width:Petal.Length:Petal.Width, names_to = "Measure", values_to = "Value")
+
+longer <- iris%>%
+  group_by(Species)%>%
+  pivot_longer(cols= 1:4,
+               names_to = "Measure",
+               values_to= "Value",)

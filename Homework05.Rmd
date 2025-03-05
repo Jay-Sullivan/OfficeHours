@@ -22,15 +22,15 @@ n_dims2 <- 1:n_dims^2
 # create a vector of consecutive integers from 1 to n_dims^2
 
 
-n_dims3 <- sample(x=n_dims2)
+n_dims3 <- sample(n_dims2)
 # use sample function to randomly reshuffle values
 
-m <- matrix(data=n_dims3,nrow=)
+m <- matrix(data=n_dims3,nrow= n_dims, ncol = n_dims)
 # create a square matrix with these elements
 
 print(m)
 # print out the matrix
-# Notes: 
+# Notes: Long list of values
 
 tmatrix <- t(m)
 # find a function in r to transpose matrix
@@ -38,9 +38,8 @@ tmatrix <- t(m)
 print(tmatrix)
 # print it out again and note how it has changed
 
-
-x1 <- 
-y1 <-
+x <- sum(tmatrix[1,])
+y <- mean(tmatrix[1,])
 # Sum and mean of 1st row
 
 x2 <-
@@ -49,7 +48,7 @@ y2 <-
 # calculate the sum and the mean of the elements in 1st and last row
 
 
-p <-
+answer <- eigen(tmatrix)
 # eigen() function in matrix
 
 
@@ -58,7 +57,8 @@ v <-
 # kind of number: 
 
 
-t <-
+t <- typeof(!!!!!)
+Type isXXXXXX
 # typeof() function to figure out type
 ```
 
@@ -67,7 +67,7 @@ t <-
 #### Q2   
 ```plaintext
 
-my_matrix <- matrix(runif(16), nrow = 4)
+my_matrix <- matrix(sample(1:10, 16, replace = TRUE), nrow = 4)
 # my_matrix
 
 

@@ -343,7 +343,7 @@ print(iris6)
 </code></pre>
 </div>
 <div id="section-7" class="section level3">
-<h3>8 !!!!!</h3>
+<h3>8</h3>
 <pre class="text"><code>Asks you to redo everything with pips statement, just start with pip statements or chain together
 
 irisFinal &lt;- iris%&gt;%
@@ -359,8 +359,12 @@ irisFinal &lt;- iris%&gt;%
 <h3>9</h3>
 <pre class="text"><code>Create a ‘longer’ data frame using the original iris data set with three columns named “Species”, “Measure”, “Value”. The column “Species” will retain the species names of the data set. The column “Measure” will include whether the value corresponds to Sepal.Length, Sepal.Width, Petal.Length, or Petal.Width and the column “Value” will include the numerical values of those measurements.
 
-
-</code></pre>
+longer &lt;- iris%&gt;%
+  group_by(Species)%&gt;%
+  select(Species,Sepal.Length)%&gt;%
+  mutate(Measure = &#39;Sepal Length&#39;)%&gt;%
+  mutate(Value = Sepal.Length)%&gt;%
+  reframe(Species,Measure,Value)</code></pre>
 </div>
 </div>
 

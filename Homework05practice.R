@@ -11,10 +11,10 @@ n_dims2 <- 1:n_dims^2
 # create a vector of consecutive integers from 1 to n_dims^2
 
 
-n_dims3 <- sample(x=n_dims2)
+n_dims3 <- sample(n_dims2)
 # use sample function to randomly reshuffle values
 
-m <- matrix(data=n_dims3,nrow=)
+m <- matrix(data=n_dims3,nrow= n_dims, ncol = n_dims)
 # create a square matrix with these elements
 
 print(m)
@@ -27,25 +27,36 @@ print(tmatrix)
 # print it out again and note how it has changed
 # Notes: Matrix turns into two rows
 
-x <- sum(tmatrix)
-y <- mean(tmatrix)
-# XXXXXXXXFIX
+x <- sum(tmatrix[1,])
+y <- mean(tmatrix[1,])
+
+lx <- sum(tmatrix[length(n_dims),])
+ly <- mean(tmatrix[length(n_dims),])
 # calculate the sum and the mean of the elements in the first row and then the last row.
 
 # EIGEN --> ?eigen()
 answer <- eigen(tmatrix)
 
+
+values <- answer$values
+answer <- answer$vectors
 # Look carefully at the elements of $ values
 
+
+typeof(values)
+typeof(answer)
+# IT IS XXXXX
 #dig in with the typeof() function
 
 
-############## 2 create a list with certain elements
+############## 2!!! create a list with certain elements
 
 # my_matrix 4X4 matrix filled with random uniform values
-my_matrix <- matrix(runif(16), nrow = 4)
+my_matrix <- matrix(sample(1:10, 16, replace = TRUE), nrow = 4)
 
+my_logical <-
 
+my_letters <- sample(letters) #????
 
 # difference is string before hand and putting into matrix, like creating variable
 val <- sample(1:4,4,replace = TRUE)

@@ -8,8 +8,9 @@ spele <- sample(10:32,200, replace = TRUE) # greater then 27mm
 
 ANOVA_HM2 <- aov(spema~spele)
 summary(ANOVA_HM2)
-m <- c(80,85,90,95,100) #changed it to seek function
-# seek function
+
+
+m <- c(80,85,90,95,100) #changed it to seek function # seek function
 for (i in 1:length(m)) {
   spema <- sample(26:m[i],200, replace = TRUE)
   ANOVA_HM2 <- aov(spema~spele)
