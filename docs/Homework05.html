@@ -286,49 +286,53 @@ n_dims2 &lt;- 1:n_dims^2
 # create a vector of consecutive integers from 1 to n_dims^2
 
 
-n_dims3 &lt;- sample(x=n_dims2)
+n_dims3 &lt;- sample(n_dims2)
 # use sample function to randomly reshuffle values
 
-m &lt;- matrix(data=n_dims3,nrow=)
+m &lt;- matrix(data=n_dims3,nrow= n_dims, ncol = n_dims)
 # create a square matrix with these elements
 
 print(m)
 # print out the matrix
-# Notes: 
+# Notes: Long list of values
 
 tmatrix &lt;- t(m)
 # find a function in r to transpose matrix
 
 print(tmatrix)
 # print it out again and note how it has changed
+#flips it, so if a number is at position 1,3 it will be moves to 3,1
+# if a number is at 3,3 it will stay
 
-
-x1 &lt;- 
-y1 &lt;-
+x &lt;- sum(tmatrix[1,])
+y &lt;- mean(tmatrix[1,])
 # Sum and mean of 1st row
 
-x2 &lt;-
-y2 &lt;-
+x2 &lt;- sum(tmatrix[length(n_dims),])
+y2 &lt;- mean(tmatrix[length(n_dims),])
 # Sum and mean of last row
 # calculate the sum and the mean of the elements in 1st and last row
 
 
-p &lt;-
+answer &lt;- eigen(tmatrix)
 # eigen() function in matrix
 
 
-v &lt;-
+values &lt;- answer$values
+answer &lt;- answer$vectors
 # $values and $vectors in output
-# kind of number: 
 
 
-t &lt;-
+
+typeof(values)
+typeof(answer)
+Type is double
 # typeof() function to figure out type</code></pre>
 </div>
 <div id="q2" class="section level4">
 <h4>Q2</h4>
 <pre class="plaintext"><code>
-my_matrix &lt;- matrix(runif(16), nrow = 4)
+my_matrix &lt;- matrix(sample(1:10, 16, replace = TRUE), nrow = 4)
 # my_matrix
 
 

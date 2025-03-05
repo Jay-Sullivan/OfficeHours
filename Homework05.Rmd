@@ -37,13 +37,15 @@ tmatrix <- t(m)
 
 print(tmatrix)
 # print it out again and note how it has changed
+#flips it, so if a number is at position 1,3 it will be moves to 3,1
+# if a number is at 3,3 it will stay
 
 x <- sum(tmatrix[1,])
 y <- mean(tmatrix[1,])
 # Sum and mean of 1st row
 
-x2 <-
-y2 <-
+x2 <- sum(tmatrix[length(n_dims),])
+y2 <- mean(tmatrix[length(n_dims),])
 # Sum and mean of last row
 # calculate the sum and the mean of the elements in 1st and last row
 
@@ -52,13 +54,15 @@ answer <- eigen(tmatrix)
 # eigen() function in matrix
 
 
-v <-
+values <- answer$values
+answer <- answer$vectors
 # $values and $vectors in output
-# kind of number: 
 
 
-t <- typeof(!!!!!)
-Type isXXXXXX
+
+typeof(values)
+typeof(answer)
+Type is double
 # typeof() function to figure out type
 ```
 
@@ -71,28 +75,45 @@ my_matrix <- matrix(sample(1:10, 16, replace = TRUE), nrow = 4)
 # my_matrix
 
 
-
+my_setLogical <- sample(1:20,100, replace = TRUE)
+x <- my_setLogical > 10
 #my_logical
 
+
+my_letters <- sample(letters)
 #my_letters
 
+newlist <- rbind(my_matrix[2,2],my_setLogical[2],my_letters[2])
 #newList
+
+typeof(newlist)
+# is a character
 #typeof()
+
+y <- c(newlist)
+typeof(y)
+# it is a character
 #combine
-#data type?
-
-
 ```
 
 
 #### Q3   
 ```plaintext
 
+my_unis <- sample(0:10,26,replace = TRUE)
+my_letters <- sample(LETTERS)
 #my_units
-
 #my_letters
 
+datax <- data.frame(my_unis, my_letters)
+#Data frame
+
+
 #first variable
+
+#Reorder data frame for second variable in alphabetical order
+
+# Calc column mean for first variable
 ```    
 
 

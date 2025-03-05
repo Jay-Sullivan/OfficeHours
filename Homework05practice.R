@@ -54,19 +54,34 @@ typeof(answer)
 # my_matrix 4X4 matrix filled with random uniform values
 my_matrix <- matrix(sample(1:10, 16, replace = TRUE), nrow = 4)
 
-my_logical <-
+x <- sample(1:20,100, replace = TRUE)
+my_setLogical <- x > 10
 
-my_letters <- sample(letters) #????
 
+# 26 element vector of all lower-case letters random order
+my_letters <- sample(letters)
 # difference is string before hand and putting into matrix, like creating variable
-val <- sample(1:4,4,replace = TRUE)
-my_matrix <- matrix(data=val,nrow=)
-print(my_matrix)
+#val <- sample(1:4,4,replace = TRUE)
+#my_matrix <- matrix(data=val,nrow=)
+#print(my_matrix)
 
+### HOMEWORK PART 2
+#New list has element [2,2] from the matrix
+newlist <- rbind(my_matrix[2,2],my_setLogical[2],my_letters[2])
+
+typeof(newlist)
+
+y <- c(newlist)
+typeof(y)
 ############### 3 Create a data frame with the two variables (=columns) and 26 cases (=rows) below:
 my_unis <- sample(0:10,26,replace = TRUE)
+my_letters <- sample(LETTERS)
+datax <- data.frame(my_unis, my_letters)
+#Use sample to randomly choose 4 things out of 24
+# 4 things will be position, link first thing to data frame (indexing)/ referencing
+#Those will be set as NA
 
-my_letters <- x
-# second variable with 26 capital letters random order
-
-#First variable single ...
+first <- sample(my_unis, 4, replace = FALSE)
+second <- datax(sample(my))
+# sample and indexing will be used
+# datax[sample(4),replace = NA]
