@@ -83,5 +83,7 @@ datax <- data.frame(my_unis, my_letters)
 
 first <- sample(my_unis, 4, replace = FALSE)
 second <- datax(sample(my))
+datax$my_unis[first] <- NA
 # sample and indexing will be used
 # datax[sample(4),replace = NA]
+missing <- which(is.na(datax$my_unis))

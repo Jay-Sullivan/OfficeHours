@@ -108,11 +108,16 @@ my_letters <- sample(LETTERS)
 datax <- data.frame(my_unis, my_letters)
 #Data frame
 
-
+datax$my_unis[first] <- NA
 #first variable
 
+missing <- which(is.na(datax$my_unis))
+#missing row code
+
+datanew <- datax[order(datax$my_letters), ]
 #Reorder data frame for second variable in alphabetical order
 
+meancolumn <- mean(datax$my_unis)
 # Calc column mean for first variable
 ```    
 
