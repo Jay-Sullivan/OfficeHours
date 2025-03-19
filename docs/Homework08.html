@@ -11,9 +11,9 @@
 
 <meta name="author" content="Jay Sullivan" />
 
-<meta name="date" content="2025-01-24" />
+<meta name="date" content="2025-03-19" />
 
-<title>Homework</title>
+<title>Homework08</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -266,26 +266,105 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Homework</h1>
+<h1 class="title toc-ignore">Homework08</h1>
 <h4 class="author">Jay Sullivan</h4>
-<h4 class="date">2025-01-24</h4>
+<h4 class="date">2025-03-19</h4>
 
 </div>
 
 
-<div id="links-to-my-homeworks" class="section level5">
-<h5>Links to my homeworks</h5>
-<p><a href="Homework03.html">Homework 3</a></p>
-<p><a href="Homework04.html">Homework 4</a></p>
-<p><a href="Homework05.html">Homework 5</a></p>
-<p><a href="Homework06.html">Homework 6</a></p>
-<p><a href="Homework07.html">Homework 7</a></p>
-<p><a href="Homework08.html">Homework 8</a></p>
-<p>[Homework 9]</p>
-<p>[Homework 10]</p>
-<p>[Homework 11]</p>
-<p>[Homework 12]</p>
-<p>[Experimental Designs]</p>
+<div id="reading-in-code" class="section level3">
+<h3>Reading in Code</h3>
+<p>The code calls in the bacteria file to a z variable that can be
+called into other code. While also calling in our ggplot and MASS
+functions.</p>
+<pre class="plaintext"><code>library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+z &lt;- read.csv(&quot;2008_bacprods_Kling.csv&quot;,header=TRUE,sep=&quot;,&quot;)
+str(z)
+summary(z)</code></pre>
+</div>
+<div id="plotting-histogram" class="section level3">
+<h3>Plotting Histogram</h3>
+<p>The code below plots the data into a histogram</p>
+<pre class="plaintext"><code>p1 &lt;- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day, y=..density..)) +
+  geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2)
+print(p1)</code></pre>
+<p><img src="Homework08_files/figure-html/2008_bacprods_Kling.csv-1.png" width="672" /></p>
+</div>
+<div id="emperical-density-curve" class="section level3">
+<h3>Emperical density curve</h3>
+<p>The code is supposed to XXXXXXX</p>
+<pre class="plaintext"><code>p1 &lt;-  p1 +  geom_density(linetype=&quot;dotted&quot;,size=0.75)
+print(p1)</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="maximum-likelihood-parameter-for-normal"
+class="section level3">
+<h3>Maximum likelihood parameter for normal</h3>
+<p>The code XXXXXXX</p>
+<pre class="plaintext"><code>normPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;normal&quot;)
+print(normPars)
+str(normPars)
+normPars$estimate[&quot;mean&quot;]</code></pre>
+<pre><code>##       mean          sd    
+##    9.8645238   19.2252099 
+##  ( 1.2110744) ( 0.8563589)</code></pre>
+</div>
+<div id="normal-probability-density" class="section level3">
+<h3>Normal Probability Density</h3>
+<p>XXXXXXX</p>
+<pre class="plaintext"><code>meanML &lt;- normPars$estimate[&quot;mean&quot;]
+sdML &lt;- normPars$estimate[&quot;sd&quot;]
+
+xval &lt;- seq(0,max(z$Bac_prod_ug_C_L_day),len=length(z$Bac_prod_ug_C_L_day))
+
+stat &lt;- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour=&quot;red&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(mean = meanML, sd = sdML))
+p1 + stat</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="exponential-probability-density" class="section level3">
+<h3>Exponential Probability Density</h3>
+<p>XXXXXXX</p>
+<pre class="plaintext"><code>expoPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;exponential&quot;)
+rateML &lt;- expoPars$estimate[&quot;rate&quot;]
+
+stat2 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour=&quot;blue&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(rate=rateML))
+p1 + stat + stat2</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="uniform-probability-density" class="section level3">
+<h3>Uniform Probability Density</h3>
+<p>XXXXX</p>
+<pre class="plaintext"><code>stat3 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour=&quot;darkgreen&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(min=min(z$Bac_prod_ug_C_L_day), max=max(z$Bac_prod_ug_C_L_day)))
+p1 + stat + stat2 + stat3</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="gamma-probability-density" class="section level3">
+<h3>Gamma Probability Density</h3>
+<p>xxxxx</p>
+<pre class="plaintext"><code>gammaPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;gamma&quot;)
+shapeML &lt;- gammaPars$estimate[&quot;shape&quot;]
+rateML &lt;- gammaPars$estimate[&quot;rate&quot;]
+
+stat4 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour=&quot;brown&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(shape=shapeML, rate=rateML))
+p1 + stat + stat2 + stat3 + stat4</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="beta-probability-density" class="section level3">
+<h3>Beta Probability Density</h3>
+<pre class="plaintext"><code>pSpecial &lt;- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day/(max(Bac_prod_ug_C_L_day + 0.1)), y=..density..)) +
+  geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2) +
+  xlim(c(0,1)) +
+  geom_density(size=0.75,linetype=&quot;dotted&quot;)
+
+betaPars &lt;- fitdistr(x=z$Bac_prod_ug_C_L_day/max(z$Bac_prod_ug_C_L_day + 0.1),start=list(shape1=1,shape2=2),&quot;beta&quot;)
+shape1ML &lt;- betaPars$estimate[&quot;shape1&quot;]
+shape2ML &lt;- betaPars$estimate[&quot;shape2&quot;]
+
+statSpecial &lt;- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour=&quot;orchid&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(shape1=shape1ML,shape2=shape2ML))
+pSpecial + statSpecial</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 
 

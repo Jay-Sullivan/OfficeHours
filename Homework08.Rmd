@@ -1,0 +1,159 @@
+---
+title: "Homework08"
+author: "Jay Sullivan"
+date: "2025-03-19"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Reading in Code
+
+The code calls in the bacteria file to a z variable that can be called into other code. While also calling in our ggplot and MASS functions.
+```plaintext
+library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+z <- read.csv("2008_bacprods_Kling.csv",header=TRUE,sep=",")
+str(z)
+summary(z)
+```   
+```{r, echo=FALSE}
+library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+z <- read.csv("2008_bacprods_Kling.csv",header=TRUE,sep=",")
+```   
+### Plotting Histogram
+The code below plots the data into a histogram
+```plaintext
+p1 <- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2)
+print(p1)
+```
+```{r 2008_bacprods_Kling.csv, echo=FALSE, warning=FALSE, message=FALSE}
+p1 <- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2)
+print(p1)
+```
+
+### Emperical density curve
+The code is supposed to XXXXXXX
+```plaintext
+p1 <-  p1 +  geom_density(linetype="dotted",size=0.75)
+print(p1)
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+p1 <-  p1 +  geom_density(linetype="dotted",size=0.75)
+print(p1)
+```
+
+### Maximum likelihood parameter for normal
+The code XXXXXXX
+```plaintext
+normPars <- fitdistr(z$Bac_prod_ug_C_L_day,"normal")
+print(normPars)
+str(normPars)
+normPars$estimate["mean"]
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+normPars <- fitdistr(z$Bac_prod_ug_C_L_day,"normal")
+print(normPars)
+# str(normPars)
+# normPars$estimate["mean"]
+```
+
+### Normal Probability Density
+XXXXXXX
+```plaintext
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(z$Bac_prod_ug_C_L_day),len=length(z$Bac_prod_ug_C_L_day))
+
+stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(z$Bac_prod_ug_C_L_day), args = list(mean = meanML, sd = sdML))
+p1 + stat
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(z$Bac_prod_ug_C_L_day),len=length(z$Bac_prod_ug_C_L_day))
+
+stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(z$Bac_prod_ug_C_L_day), args = list(mean = meanML, sd = sdML))
+p1 + stat
+```
+
+### Exponential Probability Density
+XXXXXXX
+```plaintext
+expoPars <- fitdistr(z$Bac_prod_ug_C_L_day,"exponential")
+rateML <- expoPars$estimate["rate"]
+
+stat2 <- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour="blue", n = length(z$Bac_prod_ug_C_L_day), args = list(rate=rateML))
+p1 + stat + stat2
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+expoPars <- fitdistr(z$Bac_prod_ug_C_L_day,"exponential")
+rateML <- expoPars$estimate["rate"]
+
+stat2 <- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour="blue", n = length(z$Bac_prod_ug_C_L_day), args = list(rate=rateML))
+p1 + stat + stat2
+```
+
+### Uniform Probability Density
+XXXXX
+```plaintext
+stat3 <- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour="darkgreen", n = length(z$Bac_prod_ug_C_L_day), args = list(min=min(z$Bac_prod_ug_C_L_day), max=max(z$Bac_prod_ug_C_L_day)))
+p1 + stat + stat2 + stat3
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+stat3 <- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour="darkgreen", n = length(z$Bac_prod_ug_C_L_day), args = list(min=min(z$Bac_prod_ug_C_L_day), max=max(z$Bac_prod_ug_C_L_day)))
+p1 + stat + stat2 + stat3
+```
+
+### Gamma Probability Density
+xxxxx
+```plaintext
+gammaPars <- fitdistr(z$Bac_prod_ug_C_L_day,"gamma")
+shapeML <- gammaPars$estimate["shape"]
+rateML <- gammaPars$estimate["rate"]
+
+stat4 <- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour="brown", n = length(z$Bac_prod_ug_C_L_day), args = list(shape=shapeML, rate=rateML))
+p1 + stat + stat2 + stat3 + stat4
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+gammaPars <- fitdistr(z$Bac_prod_ug_C_L_day,"gamma")
+shapeML <- gammaPars$estimate["shape"]
+rateML <- gammaPars$estimate["rate"]
+
+stat4 <- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour="brown", n = length(z$Bac_prod_ug_C_L_day), args = list(shape=shapeML, rate=rateML))
+p1 + stat + stat2 + stat3 + stat4
+```
+
+### Beta Probability Density
+```plaintext
+pSpecial <- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day/(max(Bac_prod_ug_C_L_day + 0.1)), y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) +
+  xlim(c(0,1)) +
+  geom_density(size=0.75,linetype="dotted")
+
+betaPars <- fitdistr(x=z$Bac_prod_ug_C_L_day/max(z$Bac_prod_ug_C_L_day + 0.1),start=list(shape1=1,shape2=2),"beta")
+shape1ML <- betaPars$estimate["shape1"]
+shape2ML <- betaPars$estimate["shape2"]
+
+statSpecial <- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour="orchid", n = length(z$Bac_prod_ug_C_L_day), args = list(shape1=shape1ML,shape2=shape2ML))
+pSpecial + statSpecial
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+pSpecial <- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day/(max(Bac_prod_ug_C_L_day + 0.1)), y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) +
+  xlim(c(0,1)) +
+  geom_density(size=0.75,linetype="dotted")
+
+betaPars <- fitdistr(x=z$Bac_prod_ug_C_L_day/max(z$Bac_prod_ug_C_L_day + 0.1),start=list(shape1=1,shape2=2),"beta")
+shape1ML <- betaPars$estimate["shape1"]
+shape2ML <- betaPars$estimate["shape2"]
+
+statSpecial <- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour="orchid", n = length(z$Bac_prod_ug_C_L_day), args = list(shape1=shape1ML,shape2=shape2ML))
+pSpecial + statSpecial
+```

@@ -87,3 +87,7 @@ datax$my_unis[first] <- NA
 # sample and indexing will be used
 # datax[sample(4),replace = NA]
 missing <- which(is.na(datax$my_unis))
+
+datanew <- datax[order(datax$my_letters), ]
+
+meancolumn <- mean(datax$my_unis)
