@@ -157,3 +157,7 @@ shape2ML <- betaPars$estimate["shape2"]
 statSpecial <- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour="orchid", n = length(z$Bac_prod_ug_C_L_day), args = list(shape1=shape1ML,shape2=shape2ML))
 pSpecial + statSpecial
 ```
+
+
+### Best Distribution
+# Make new data set to generate for gamma set
