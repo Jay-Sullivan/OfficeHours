@@ -286,15 +286,16 @@ summary(z)</code></pre>
 </div>
 <div id="plotting-histogram" class="section level3">
 <h3>Plotting Histogram</h3>
-<p>The code below plots the data into a histogram</p>
+<p>The code below plots the data into a histogram.</p>
 <pre class="plaintext"><code>p1 &lt;- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day, y=..density..)) +
   geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2)
 print(p1)</code></pre>
 <p><img src="Homework08_files/figure-html/2008_bacprods_Kling.csv-1.png" width="672" /></p>
 </div>
-<div id="emperical-density-curve" class="section level3">
-<h3>Emperical density curve</h3>
-<p>The code is supposed to XXXXXXX</p>
+<div id="empirical-density-curve" class="section level3">
+<h3>Empirical density curve</h3>
+<p>The code is supposed to show how the density of the group is
+reflected in the histogram</p>
 <pre class="plaintext"><code>p1 &lt;-  p1 +  geom_density(linetype=&quot;dotted&quot;,size=0.75)
 print(p1)</code></pre>
 <p><img src="Homework08_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
@@ -302,7 +303,7 @@ print(p1)</code></pre>
 <div id="maximum-likelihood-parameter-for-normal"
 class="section level3">
 <h3>Maximum likelihood parameter for normal</h3>
-<p>The code XXXXXXX</p>
+<p>The code finds the means and the standard deviation of the data.</p>
 <pre class="plaintext"><code>normPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;normal&quot;)
 print(normPars)
 str(normPars)
@@ -313,7 +314,7 @@ normPars$estimate[&quot;mean&quot;]</code></pre>
 </div>
 <div id="normal-probability-density" class="section level3">
 <h3>Normal Probability Density</h3>
-<p>XXXXXXX</p>
+<p>The normal distribution of the data</p>
 <pre class="plaintext"><code>meanML &lt;- normPars$estimate[&quot;mean&quot;]
 sdML &lt;- normPars$estimate[&quot;sd&quot;]
 
@@ -325,7 +326,7 @@ p1 + stat</code></pre>
 </div>
 <div id="exponential-probability-density" class="section level3">
 <h3>Exponential Probability Density</h3>
-<p>XXXXXXX</p>
+<p>Plots the data as if it was in an exponential graph</p>
 <pre class="plaintext"><code>expoPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;exponential&quot;)
 rateML &lt;- expoPars$estimate[&quot;rate&quot;]
 
@@ -335,14 +336,14 @@ p1 + stat + stat2</code></pre>
 </div>
 <div id="uniform-probability-density" class="section level3">
 <h3>Uniform Probability Density</h3>
-<p>XXXXX</p>
+<p>Plots the data as if it was a uniform graph</p>
 <pre class="plaintext"><code>stat3 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour=&quot;darkgreen&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(min=min(z$Bac_prod_ug_C_L_day), max=max(z$Bac_prod_ug_C_L_day)))
 p1 + stat + stat2 + stat3</code></pre>
 <p><img src="Homework08_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="gamma-probability-density" class="section level3">
 <h3>Gamma Probability Density</h3>
-<p>xxxxx</p>
+<p>Plots the data similarly like the exponential function.</p>
 <pre class="plaintext"><code>gammaPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;gamma&quot;)
 shapeML &lt;- gammaPars$estimate[&quot;shape&quot;]
 rateML &lt;- gammaPars$estimate[&quot;rate&quot;]
@@ -353,6 +354,7 @@ p1 + stat + stat2 + stat3 + stat4</code></pre>
 </div>
 <div id="beta-probability-density" class="section level3">
 <h3>Beta Probability Density</h3>
+<p>Raw data is scaled to either zero or one.</p>
 <pre class="plaintext"><code>pSpecial &lt;- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day/(max(Bac_prod_ug_C_L_day + 0.1)), y=..density..)) +
   geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2) +
   xlim(c(0,1)) +
@@ -365,6 +367,36 @@ shape2ML &lt;- betaPars$estimate[&quot;shape2&quot;]
 statSpecial &lt;- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour=&quot;orchid&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(shape1=shape1ML,shape2=shape2ML))
 pSpecial + statSpecial</code></pre>
 <p><img src="Homework08_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="best-fitting-distribution" class="section level2">
+<h2>Best Fitting Distribution</h2>
+<p>The best fitting distribution would have to be empirical density
+curve due to the way it follows the trend of the data.</p>
+<div id="simulating-new-data-set" class="section level3">
+<h3>Simulating New Data Set</h3>
+<p>This code makes a randomly generated data set of 200 specimens.</p>
+<p>The code also finds the quartile ranges as well as the median and
+mean.</p>
+<pre><code>## &#39;data.frame&#39;:    1768 obs. of  2 variables:
+##  $ ID   : int  1 2 3 4 7 8 11 12 13 15 ...
+##  $ myVar: num  0.0857 1.5103 1.3596 0.6463 0.6916 ...</code></pre>
+<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## 0.000056 0.354282 0.758826 0.870057 1.244960 3.674059</code></pre>
+<p>This code plots the random data set.</p>
+<pre class="plaintext"><code>p1 &lt;- ggplot(data=nd, aes(x=myVar, y=..density..)) +
+  geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2)
+print(p1)</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>This code XXXX</p>
+<pre class="plaintext"><code>meanML &lt;- normPars$estimate[&quot;mean&quot;]
+sdML &lt;- normPars$estimate[&quot;sd&quot;]
+
+xval &lt;- seq(0,max(z$Bac_prod_ug_C_L_day),len=length(z$Bac_prod_ug_C_L_day))
+
+stat &lt;- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour=&quot;red&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(mean = meanML, sd = sdML))
+p1 + stat</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
 </div>
 
 

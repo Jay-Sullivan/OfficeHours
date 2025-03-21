@@ -24,7 +24,7 @@ library(MASS) # for maximum likelihood estimation
 z <- read.csv("2008_bacprods_Kling.csv",header=TRUE,sep=",")
 ```   
 ### Plotting Histogram
-The code below plots the data into a histogram
+The code below plots the data into a histogram.
 ```plaintext
 p1 <- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day, y=..density..)) +
   geom_histogram(color="grey60",fill="cornsilk",size=0.2)
@@ -36,8 +36,8 @@ p1 <- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day, y=..density..)) +
 print(p1)
 ```
 
-### Emperical density curve
-The code is supposed to XXXXXXX
+### Empirical density curve
+The code is supposed to show how the density of the group is reflected in the histogram
 ```plaintext
 p1 <-  p1 +  geom_density(linetype="dotted",size=0.75)
 print(p1)
@@ -48,7 +48,7 @@ print(p1)
 ```
 
 ### Maximum likelihood parameter for normal
-The code XXXXXXX
+The code finds the means and the standard deviation of the data.
 ```plaintext
 normPars <- fitdistr(z$Bac_prod_ug_C_L_day,"normal")
 print(normPars)
@@ -63,7 +63,7 @@ print(normPars)
 ```
 
 ### Normal Probability Density
-XXXXXXX
+The normal distribution of the data
 ```plaintext
 meanML <- normPars$estimate["mean"]
 sdML <- normPars$estimate["sd"]
@@ -84,7 +84,7 @@ p1 + stat
 ```
 
 ### Exponential Probability Density
-XXXXXXX
+Plots the data as if it was in an exponential graph
 ```plaintext
 expoPars <- fitdistr(z$Bac_prod_ug_C_L_day,"exponential")
 rateML <- expoPars$estimate["rate"]
@@ -101,7 +101,7 @@ p1 + stat + stat2
 ```
 
 ### Uniform Probability Density
-XXXXX
+Plots the data as if it was a uniform graph
 ```plaintext
 stat3 <- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour="darkgreen", n = length(z$Bac_prod_ug_C_L_day), args = list(min=min(z$Bac_prod_ug_C_L_day), max=max(z$Bac_prod_ug_C_L_day)))
 p1 + stat + stat2 + stat3
@@ -112,7 +112,7 @@ p1 + stat + stat2 + stat3
 ```
 
 ### Gamma Probability Density
-xxxxx
+Plots the data similarly like the exponential function.
 ```plaintext
 gammaPars <- fitdistr(z$Bac_prod_ug_C_L_day,"gamma")
 shapeML <- gammaPars$estimate["shape"]
@@ -131,6 +131,7 @@ p1 + stat + stat2 + stat3 + stat4
 ```
 
 ### Beta Probability Density
+Raw data is scaled to either zero or one.
 ```plaintext
 pSpecial <- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day/(max(Bac_prod_ug_C_L_day + 0.1)), y=..density..)) +
   geom_histogram(color="grey60",fill="cornsilk",size=0.2) +
@@ -158,6 +159,54 @@ statSpecial <- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour="orch
 pSpecial + statSpecial
 ```
 
+## Best Fitting Distribution
+The best fitting distribution would have to be empirical density curve due to the way it follows the trend of the data.
 
-### Best Distribution
-# Make new data set to generate for gamma set
+### Simulating New Data Set
+This code makes a randomly generated data set of 200 specimens.   
+
+
+The code also finds the quartile ranges as well as the median and mean.
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+nd <- rnorm(n=3000,mean=0.2)
+nd <- data.frame(1:3000,nd)
+names(nd) <- list("ID","myVar")
+nd <- nd[nd$myVar>0,]
+str(nd)
+summary(nd$myVar)
+```
+
+This code plots the random data set.
+```plaintext
+p1 <- ggplot(data=nd, aes(x=myVar, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2)
+print(p1)
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+p1 <- ggplot(data=nd, aes(x=myVar, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2)
+print(p1)
+```
+
+This code creates the normal probability density which best fits the data.
+```plaintext
+normPars <- fitdistr(nd$myVar,"normal")
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(nd$myVar),len=length(nd$myVar))
+
+stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(nd$myVar), args = list(mean = meanML, sd = sdML))
+p1 + stat
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+normPars <- fitdistr(nd$myVar,"normal")
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(nd$myVar),len=length(nd$myVar))
+
+stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(nd$myVar), args = list(mean = meanML, sd = sdML))
+p1 + stat
+
+```
