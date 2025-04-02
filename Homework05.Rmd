@@ -8,13 +8,12 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+## Problems
+#### Q1
 ```{r, include=TRUE}
 n_dims <- sample(3:10,1,replace = TRUE)
 rep(n_dims)
 ```
-## Problems
-#### Q1
 ```{r, include=TRUE}
 n_dims <- sample(3:10,1,replace = TRUE)
 # single random integer between 3 and 10
@@ -102,27 +101,32 @@ typeof(y)
 
 #### Q3   
 ####### Create a data frame with the two variables (= columns) and 26 cases (= rows) below:
-```text
+```{r, include=TRUE}
 
 my_unis <- sample(0:10,26,replace = TRUE)
 my_letters <- sample(LETTERS)
-#my_units
-#my_letters
+rep(my_unis)
 
 datax <- data.frame(my_unis, my_letters)
 #Data frame
+rep(datax)
 
-datax$my_unis[first] <- NA
+datax$my_unis[sample(1:26, 4)] <- NA
 #first variable
 
 missing <- which(is.na(datax$my_unis))
 #missing row code
+print(missing)
 
 datanew <- datax[order(datax$my_letters), ]
 #Reorder data frame for second variable in alphabetical order
+rep(datanew)
 
-meancolumn <- mean(datax$my_unis)
+meancolumn <- mean(datax$my_unis, na.rm = TRUE)
 # Calc column mean for first variable
+rep(meancolumn)
+
+
 ```    
 
 

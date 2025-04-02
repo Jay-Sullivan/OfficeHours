@@ -273,13 +273,13 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>n_dims &lt;- sample(3:10,1,replace = TRUE)
-rep(n_dims)</code></pre>
-<pre><code>## [1] 7</code></pre>
 <div id="problems" class="section level2">
 <h2>Problems</h2>
 <div id="q1" class="section level4">
 <h4>Q1</h4>
+<pre class="r"><code>n_dims &lt;- sample(3:10,1,replace = TRUE)
+rep(n_dims)</code></pre>
+<pre><code>## [1] 5</code></pre>
 <pre class="r"><code>n_dims &lt;- sample(3:10,1,replace = TRUE)
 # single random integer between 3 and 10
 # different function for integer values, whole numbers
@@ -296,17 +296,12 @@ m &lt;- matrix(data=n_dims3,nrow= n_dims, ncol = n_dims)
 # create a square matrix with these elements
 
 print(m)</code></pre>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-##  [1,]   26   57   32   71   53   34   21    3   10    28
-##  [2,]   44   98   16   55   54   25   97   65   41     9
-##  [3,]   75   67    5   96   84   72    4   29   59    15
-##  [4,]   89   14   62   63   77   87   91   40   93    99
-##  [5,]    7   95   22   37   49   24   94   42   35    79
-##  [6,]   81   45   50   18    2   86    8   17   82    88
-##  [7,]   12   23   85   47   73   27   74   36   20    68
-##  [8,]   58   33   66   90   69   52   92   11   76    78
-##  [9,]  100   61   60   39   56   13   43   31   70    83
-## [10,]   64   19   51   30   38   80    6   46    1    48</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]   23    5   20   14   25
+## [2,]   10    8    9   21    6
+## [3,]   16   17    3   22   11
+## [4,]   15    1   13    7   24
+## [5,]    2   19    4   12   18</code></pre>
 <pre class="r"><code># print out the matrix
 # Notes: Long list of values
 
@@ -314,17 +309,12 @@ tmatrix &lt;- t(m)
 # find a function in r to transpose matrix
 
 print(tmatrix)</code></pre>
-<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-##  [1,]   26   44   75   89    7   81   12   58  100    64
-##  [2,]   57   98   67   14   95   45   23   33   61    19
-##  [3,]   32   16    5   62   22   50   85   66   60    51
-##  [4,]   71   55   96   63   37   18   47   90   39    30
-##  [5,]   53   54   84   77   49    2   73   69   56    38
-##  [6,]   34   25   72   87   24   86   27   52   13    80
-##  [7,]   21   97    4   91   94    8   74   92   43     6
-##  [8,]    3   65   29   40   42   17   36   11   31    46
-##  [9,]   10   41   59   93   35   82   20   76   70     1
-## [10,]   28    9   15   99   79   88   68   78   83    48</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]   23   10   16   15    2
+## [2,]    5    8   17    1   19
+## [3,]   20    9    3   13    4
+## [4,]   14   21   22    7   12
+## [5,]   25    6   11   24   18</code></pre>
 <pre class="r"><code># print it out again and note how it has changed
 #flips it, so if a number is at position 1,3 it will be moves to 3,1
 # if a number is at 3,3 it will stay
@@ -391,26 +381,42 @@ id="create-a-data-frame-with-the-two-variables-columns-and-26-cases-rows-below"
 class="section level7">
 <p class="heading">Create a data frame with the two variables (=
 columns) and 26 cases (= rows) below:</p>
-<pre class="text"><code>
-my_unis &lt;- sample(0:10,26,replace = TRUE)
+<pre class="r"><code>my_unis &lt;- sample(0:10,26,replace = TRUE)
 my_letters &lt;- sample(LETTERS)
-#my_units
-#my_letters
-
-datax &lt;- data.frame(my_unis, my_letters)
+rep(my_unis)</code></pre>
+<pre><code>##  [1]  2  7  3  6  0  7 10  3  0  3  5  7  0  1  0  1  1  6  3  5  3  1  8  0  7
+## [26]  5</code></pre>
+<pre class="r"><code>datax &lt;- data.frame(my_unis, my_letters)
 #Data frame
-
-datax$my_unis[first] &lt;- NA
+rep(datax)</code></pre>
+<pre><code>## $my_unis
+##  [1]  2  7  3  6  0  7 10  3  0  3  5  7  0  1  0  1  1  6  3  5  3  1  8  0  7
+## [26]  5
+## 
+## $my_letters
+##  [1] &quot;X&quot; &quot;Z&quot; &quot;B&quot; &quot;G&quot; &quot;J&quot; &quot;P&quot; &quot;U&quot; &quot;W&quot; &quot;L&quot; &quot;K&quot; &quot;O&quot; &quot;D&quot; &quot;E&quot; &quot;I&quot; &quot;H&quot; &quot;Y&quot; &quot;T&quot; &quot;Q&quot; &quot;V&quot;
+## [20] &quot;S&quot; &quot;N&quot; &quot;M&quot; &quot;R&quot; &quot;F&quot; &quot;C&quot; &quot;A&quot;</code></pre>
+<pre class="r"><code>datax$my_unis[sample(1:26, 4)] &lt;- NA
 #first variable
 
 missing &lt;- which(is.na(datax$my_unis))
 #missing row code
-
-datanew &lt;- datax[order(datax$my_letters), ]
+print(missing)</code></pre>
+<pre><code>## [1]  2 13 16 20</code></pre>
+<pre class="r"><code>datanew &lt;- datax[order(datax$my_letters), ]
 #Reorder data frame for second variable in alphabetical order
-
-meancolumn &lt;- mean(datax$my_unis)
-# Calc column mean for first variable</code></pre>
+rep(datanew)</code></pre>
+<pre><code>## $my_unis
+##  [1]  5  3  7  7 NA  0  6  0  1  0  3  0  1  3  5  7  6  8 NA  1 10  3  3  2 NA
+## [26] NA
+## 
+## $my_letters
+##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot;
+## [20] &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
+<pre class="r"><code>meancolumn &lt;- mean(datax$my_unis, na.rm = TRUE)
+# Calc column mean for first variable
+rep(meancolumn)</code></pre>
+<pre><code>## [1] 3.681818</code></pre>
 <p><a href="index.html">Return Home</a></p>
 </div>
 </div>
