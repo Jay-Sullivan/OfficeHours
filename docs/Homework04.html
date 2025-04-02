@@ -276,7 +276,7 @@ $(document).ready(function () {
 <p><br></p>
 <div id="problem-01" class="section level3">
 <h3>Problem 01</h3>
-<pre class="plaintext"><code>x &lt;- 1.1  
+<pre class="r"><code>x &lt;- 1.1  
 a &lt;- 2.2  
 b &lt;- 3.3  
 
@@ -286,7 +286,9 @@ w &lt;- ((x^a)^b)
 m &lt;- (3*x^3 + 2*x^2 + 1)
 
 
-z &lt;- c(y,w,m)</code></pre>
+z &lt;- c(y,w,m)
+rep(z)</code></pre>
+<pre><code>## [1] 3.617140 1.997611 7.413000</code></pre>
 <div id="notes" class="section level4">
 <h4>Notes:</h4>
 <p>We have our variables x, a, and b, being assigned various
@@ -300,18 +302,22 @@ Finally z has all the previous expression stored in it.</p>
 <h3>Problem 02</h3>
 <div id="part-a" class="section level5">
 <h5>Part A</h5>
-<pre class="plaintext"><code>prob &lt;- c(seq(1:8), seq(from=7, to=1))</code></pre>
+<pre class="r"><code>prob &lt;- c(seq(1:8), seq(from=7, to=1))
+rep(prob)</code></pre>
+<pre><code>##  [1] 1 2 3 4 5 6 7 8 7 6 5 4 3 2 1</code></pre>
 </div>
 <div id="part-b" class="section level5">
 <h5>Part B</h5>
-<pre class="plaintext"><code>test &lt;- c(1:5)   
+<pre class="r"><code>test &lt;- c(1:5)   
 rep(x=test,times=test)</code></pre>
+<pre><code>##  [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5</code></pre>
 </div>
 <div id="part-c" class="section level5">
 <h5>Part C</h5>
-<pre class="plaintext"><code>new &lt;- seq(from=5, to=1)   
+<pre class="r"><code>new &lt;- seq(from=5, to=1)   
 test2 &lt;- c(5:1)   
 rep(x=new,times=test)   </code></pre>
+<pre><code>##  [1] 5 4 4 3 3 3 2 2 2 2 1 1 1 1 1</code></pre>
 </div>
 <div id="notes-1" class="section level5">
 <h5>Notes:</h5>
@@ -322,12 +328,14 @@ Second part of the assignment in Homework 4</p>
 </div>
 <div id="problem-03" class="section level3">
 <h3>Problem 03</h3>
-<pre class="plaintext"><code>numberx &lt;- runif(1)   
+<pre class="r"><code>numberx &lt;- runif(1)   
 numbery &lt;- runif(1)   
 r &lt;- sqrt(numberx^2 + numbery^2)   
 zero &lt;- atan(numberx/numbery)   
 
-final &lt;- c(r, zero)</code></pre>
+final &lt;- c(r, zero)
+rep(final)</code></pre>
+<pre><code>## [1] 0.2588429 1.1470282</code></pre>
 <div id="notes-2" class="section level5">
 <h5>Notes:</h5>
 <p>For problem three this program generates two random numbers for the x
@@ -338,7 +346,7 @@ to properly use the polar coordinates.</p>
 </div>
 <div id="problem-04" class="section level3">
 <h3>Problem 04</h3>
-<pre class="plaintext"><code>queue &lt;- c(&quot;Sheep&quot;, &quot;fox&quot;, &quot;owl&quot;, &quot;ant&quot;)   
+<pre class="r"><code>queue &lt;- c(&quot;Sheep&quot;, &quot;fox&quot;, &quot;owl&quot;, &quot;ant&quot;)   
 
 
 queue &lt;- append(queue,&quot;Serpent&quot;) #A   
@@ -347,7 +355,9 @@ queue &lt;- append(queue, &quot;Donkey&quot;, 0) #C
 queue &lt;- (queue[! queue%in% c(&quot;Serpent&quot;)]) #D   
 queue &lt;- (queue[! queue%in% c(&quot;owl&quot;)]) #E   
 queue &lt;- append(queue, &quot;Aphid&quot;, after = which(queue == &quot;ant&quot;)) #F   
-ap &lt;- which(queue == &quot;Aphid&quot;) #G.   </code></pre>
+ap &lt;- which(queue == &quot;Aphid&quot;) #G.   
+rep(queue)</code></pre>
+<pre><code>## [1] &quot;Donkey&quot; &quot;fox&quot;    &quot;ant&quot;    &quot;Aphid&quot;</code></pre>
 <div id="notes-3" class="section level5">
 <h5>Notes:</h5>
 <p>The queue contains our original animal line while each step from A-G
@@ -358,9 +368,12 @@ corresponds with the step its solving.</p>
 </div>
 <div id="problem-05" class="section level3">
 <h3>Problem 05</h3>
-<pre class="plaintext"><code>Rnumbers &lt;- c(1:100)   
+<pre class="r"><code>Rnumbers &lt;- c(1:100)   
 
-Rvect &lt;- which(Rnumbers %%2 !=0 &amp; Rnumbers %%3 !=0 &amp; Rnumbers%%7 !=0)</code></pre>
+Rvect &lt;- which(Rnumbers %%2 !=0 &amp; Rnumbers %%3 !=0 &amp; Rnumbers%%7 !=0)
+rep(Rvect)</code></pre>
+<pre><code>##  [1]  1  5 11 13 17 19 23 25 29 31 37 41 43 47 53 55 59 61 65 67 71 73 79 83 85
+## [26] 89 95 97</code></pre>
 <div id="notes-4" class="section level5">
 <h5>Notes:</h5>
 <p>Rnumbers is used to call the 1-100 list of numbers. It is then called

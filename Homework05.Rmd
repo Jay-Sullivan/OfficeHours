@@ -9,10 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
+```{r, include=TRUE}
+n_dims <- sample(3:10,1,replace = TRUE)
+rep(n_dims)
+```
 ## Problems
 #### Q1
-```plaintext
+```{r, include=TRUE}
 n_dims <- sample(3:10,1,replace = TRUE)
 # single random integer between 3 and 10
 # different function for integer values, whole numbers
@@ -62,14 +65,14 @@ answer <- answer$vectors
 
 typeof(values)
 typeof(answer)
-Type is double
+# type is double
 # typeof() function to figure out type
 ```
 
 
 
 #### Q2   
-```plaintext
+```{r, include=TRUE}
 
 my_matrix <- matrix(sample(1:10, 16, replace = TRUE), nrow = 4)
 # my_matrix
@@ -98,7 +101,8 @@ typeof(y)
 
 
 #### Q3   
-```plaintext
+####### Create a data frame with the two variables (= columns) and 26 cases (= rows) below:
+```text
 
 my_unis <- sample(0:10,26,replace = TRUE)
 my_letters <- sample(LETTERS)

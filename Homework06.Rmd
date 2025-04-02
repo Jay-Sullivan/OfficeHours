@@ -9,11 +9,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 #Creating Fake Data Sets To Explore Hypotheses
-
-```plaintext
+```{r, include=TRUE}
 
 spema <- sample(26:80,20, replace = TRUE)
-spele <- sample(24:30, 12, replace = TRUE)
+spele <- sample(24:30,20, replace = TRUE)
+data <- data.frame(spema, spele)
+
+rep(spema)
+rep(spele)
 
 #spema follows the random distribution of species 1 skull size
 # The lowest skull size is 26 while the highest it can be is 80. There are 20 specimens
@@ -22,17 +25,18 @@ spele <- sample(24:30, 12, replace = TRUE)
 ```
 
 ###ANOVA TEST
-```plaintext
-ANOVA_HM2 <- aov(spema~spele)
+```{r, include=TRUE}
+ANOVA_HM2 <- aov(spema~spele, data = data)
 summary(ANOVA_HM2)
 
 # here is the code that assigns the anova test to the variable ANOVA_HM2
 ```   
 ###For Loop Function
-```plaintext
+```{r, include=TRUE}
 m <- c(80,85,90,95,100)
 for (i in 1:length(m)) {
   spema <- sample(26:m[i],200, replace = TRUE)
+  spele <- sample(10:32, 200, replace = TRUE) # Had to add to correct error
   ANOVA_HM2 <- aov(spema~spele)
   x <- summary(ANOVA_HM2)
   print(m[i])

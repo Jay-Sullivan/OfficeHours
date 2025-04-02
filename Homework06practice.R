@@ -5,6 +5,7 @@ spele <- sample(10:32,200, replace = TRUE) # greater then 27mm
 # for two groups
 # Need a box plot of the spema and spele
 # Now organize them into two columns, one for spema and one for spele
+data <- data.frame(spema, spele)
 
 ANOVA_HM2 <- aov(spema~spele)
 summary(ANOVA_HM2)
@@ -21,3 +22,4 @@ for (i in 1:length(m)) {
   #cat("Loop number =",i,"Anova Results =", x,"\n")
 }
 # strange the higher i get the less difference there is
+

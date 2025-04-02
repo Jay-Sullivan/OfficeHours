@@ -274,29 +274,46 @@ $(document).ready(function () {
 
 
 <p>#Creating Fake Data Sets To Explore Hypotheses</p>
-<pre class="plaintext"><code>
-spema &lt;- sample(26:80,20, replace = TRUE)
-spele &lt;- sample(24:30, 12, replace = TRUE)
+<pre class="r"><code>spema &lt;- sample(26:80,20, replace = TRUE)
+spele &lt;- sample(24:30,20, replace = TRUE)
+data &lt;- data.frame(spema, spele)
 
-#spema follows the random distribution of species 1 skull size
+rep(spema)</code></pre>
+<pre><code>##  [1] 57 41 74 46 55 67 53 71 79 37 61 76 61 56 31 64 34 72 52 26</code></pre>
+<pre class="r"><code>rep(spele)</code></pre>
+<pre><code>##  [1] 30 24 26 27 25 28 24 30 25 27 30 27 30 29 30 29 29 28 24 28</code></pre>
+<pre class="r"><code>#spema follows the random distribution of species 1 skull size
 # The lowest skull size is 26 while the highest it can be is 80. There are 20 specimens
 #spele follows the random distribution of species 2 skull size
 # The lowest skull size is 10 while the highest it can be is 32. There are 20 specimens</code></pre>
 <p>###ANOVA TEST</p>
-<pre class="plaintext"><code>ANOVA_HM2 &lt;- aov(spema~spele)
-summary(ANOVA_HM2)
-
-# here is the code that assigns the anova test to the variable ANOVA_HM2</code></pre>
+<pre class="r"><code>ANOVA_HM2 &lt;- aov(spema~spele, data = data)
+summary(ANOVA_HM2)</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
+## spele        1      5    4.62   0.018  0.895
+## Residuals   18   4684  260.22</code></pre>
+<pre class="r"><code># here is the code that assigns the anova test to the variable ANOVA_HM2</code></pre>
 <p>###For Loop Function</p>
-<pre class="plaintext"><code>m &lt;- c(80,85,90,95,100)
+<pre class="r"><code>m &lt;- c(80,85,90,95,100)
 for (i in 1:length(m)) {
   spema &lt;- sample(26:m[i],200, replace = TRUE)
+  spele &lt;- sample(10:32, 200, replace = TRUE)
   ANOVA_HM2 &lt;- aov(spema~spele)
   x &lt;- summary(ANOVA_HM2)
   print(m[i])
   print(x[[1]]$`Pr(&gt;F)`)
-}
-# m is used to store the loops of the increasing value
+}</code></pre>
+<pre><code>## [1] 80
+## [1] 0.9964014        NA
+## [1] 85
+## [1] 0.9296422        NA
+## [1] 90
+## [1] 0.9251462        NA
+## [1] 95
+## [1] 0.2819063        NA
+## [1] 100
+## [1] 0.5363729        NA</code></pre>
+<pre class="r"><code># m is used to store the loops of the increasing value
 # The for loop stars with the length of m, every time it loops the value of my spema&#39;s higher end is increased by 5 mm every loop.
 # After the loop is calculated the value that is changed is printed followed by the anova test value. This loop continues until it hits the final length of m</code></pre>
 

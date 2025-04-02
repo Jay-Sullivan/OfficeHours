@@ -278,36 +278,72 @@ $(document).ready(function () {
 <p>The code calls in the bacteria file to a z variable that can be
 called into other code. While also calling in our ggplot and MASS
 functions.</p>
-<pre class="plaintext"><code>library(ggplot2) # for graphics
+<pre class="r"><code>library(ggplot2) # for graphics
 library(MASS) # for maximum likelihood estimation
 z &lt;- read.csv(&quot;2008_bacprods_Kling.csv&quot;,header=TRUE,sep=&quot;,&quot;)
-str(z)
-summary(z)</code></pre>
+str(z)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    252 obs. of  6 variables:
+##  $ SortChem           : chr  &quot;2008-0020&quot; &quot;2008-0021&quot; &quot;2008-0022&quot; &quot;2008-0023&quot; ...
+##  $ Site               : chr  &quot;Toolik Inlet Bay&quot; &quot;Toolik&quot; &quot;Toolik Southwest Basin&quot; &quot;Toolik Moraine&quot; ...
+##  $ Date               : chr  &quot;26-May-08&quot; &quot;26-May-08&quot; &quot;26-May-08&quot; &quot;26-May-08&quot; ...
+##  $ Time_hr_.DST.      : chr  &quot;11:00&quot; &quot;11:45&quot; &quot;12:19&quot; &quot;12:45&quot; ...
+##  $ Depth_m            : num  5 5 5 5 5 5 5 5 5 5 ...
+##  $ Bac_prod_ug_C_L_day: num  2.91 2.26 2.29 2.39 2.2 ...</code></pre>
+<pre class="r"><code>summary(z)</code></pre>
+<pre><code>##    SortChem             Site               Date           Time_hr_.DST.     
+##  Length:252         Length:252         Length:252         Length:252        
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##     Depth_m       Bac_prod_ug_C_L_day
+##  Min.   : 0.010   Min.   :  0.220    
+##  1st Qu.: 0.010   1st Qu.:  2.288    
+##  Median : 1.000   Median :  4.940    
+##  Mean   : 2.944   Mean   :  9.865    
+##  3rd Qu.: 5.000   3rd Qu.:  7.230    
+##  Max.   :16.000   Max.   :165.110</code></pre>
 </div>
 <div id="plotting-histogram" class="section level3">
 <h3>Plotting Histogram</h3>
 <p>The code below plots the data into a histogram.</p>
-<pre class="plaintext"><code>p1 &lt;- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day, y=..density..)) +
-  geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2)
-print(p1)</code></pre>
+<pre class="r"><code>p1 &lt;- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day, y=..density..)) +
+  geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2)</code></pre>
 <p><img src="Homework08_files/figure-html/2008_bacprods_Kling.csv-1.png" width="672" /></p>
 </div>
 <div id="empirical-density-curve" class="section level3">
 <h3>Empirical density curve</h3>
 <p>The code is supposed to show how the density of the group is
 reflected in the histogram</p>
-<pre class="plaintext"><code>p1 &lt;-  p1 +  geom_density(linetype=&quot;dotted&quot;,size=0.75)
-print(p1)</code></pre>
-<p><img src="Homework08_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>p1 &lt;-  p1 +  geom_density(linetype=&quot;dotted&quot;,size=0.75)</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="maximum-likelihood-parameter-for-normal"
 class="section level3">
 <h3>Maximum likelihood parameter for normal</h3>
 <p>The code finds the means and the standard deviation of the data.</p>
-<pre class="plaintext"><code>normPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;normal&quot;)
-print(normPars)
-str(normPars)
-normPars$estimate[&quot;mean&quot;]</code></pre>
+<pre class="r"><code>normPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;normal&quot;)
+print(normPars)</code></pre>
+<pre><code>##       mean          sd    
+##    9.8645238   19.2252099 
+##  ( 1.2110744) ( 0.8563589)</code></pre>
+<pre class="r"><code>str(normPars)</code></pre>
+<pre><code>## List of 5
+##  $ estimate: Named num [1:2] 9.86 19.23
+##   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;mean&quot; &quot;sd&quot;
+##  $ sd      : Named num [1:2] 1.211 0.856
+##   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;mean&quot; &quot;sd&quot;
+##  $ vcov    : num [1:2, 1:2] 1.467 0 0 0.733
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:2] &quot;mean&quot; &quot;sd&quot;
+##   .. ..$ : chr [1:2] &quot;mean&quot; &quot;sd&quot;
+##  $ n       : int 252
+##  $ loglik  : num -1103
+##  - attr(*, &quot;class&quot;)= chr &quot;fitdistr&quot;</code></pre>
+<pre class="r"><code>normPars$estimate[&quot;mean&quot;]</code></pre>
+<pre><code>##     mean 
+## 9.864524</code></pre>
 <pre><code>##       mean          sd    
 ##    9.8645238   19.2252099 
 ##  ( 1.2110744) ( 0.8563589)</code></pre>
@@ -315,47 +351,43 @@ normPars$estimate[&quot;mean&quot;]</code></pre>
 <div id="normal-probability-density" class="section level3">
 <h3>Normal Probability Density</h3>
 <p>The normal distribution of the data</p>
-<pre class="plaintext"><code>meanML &lt;- normPars$estimate[&quot;mean&quot;]
+<pre class="r"><code>meanML &lt;- normPars$estimate[&quot;mean&quot;]
 sdML &lt;- normPars$estimate[&quot;sd&quot;]
 
 xval &lt;- seq(0,max(z$Bac_prod_ug_C_L_day),len=length(z$Bac_prod_ug_C_L_day))
 
-stat &lt;- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour=&quot;red&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(mean = meanML, sd = sdML))
-p1 + stat</code></pre>
-<p><img src="Homework08_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+stat &lt;- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour=&quot;red&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(mean = meanML, sd = sdML))</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="exponential-probability-density" class="section level3">
 <h3>Exponential Probability Density</h3>
 <p>Plots the data as if it was in an exponential graph</p>
-<pre class="plaintext"><code>expoPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;exponential&quot;)
+<pre class="r"><code>expoPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;exponential&quot;)
 rateML &lt;- expoPars$estimate[&quot;rate&quot;]
 
-stat2 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour=&quot;blue&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(rate=rateML))
-p1 + stat + stat2</code></pre>
-<p><img src="Homework08_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+stat2 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour=&quot;blue&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(rate=rateML))</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="uniform-probability-density" class="section level3">
 <h3>Uniform Probability Density</h3>
 <p>Plots the data as if it was a uniform graph</p>
-<pre class="plaintext"><code>stat3 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour=&quot;darkgreen&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(min=min(z$Bac_prod_ug_C_L_day), max=max(z$Bac_prod_ug_C_L_day)))
-p1 + stat + stat2 + stat3</code></pre>
-<p><img src="Homework08_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>stat3 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour=&quot;darkgreen&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(min=min(z$Bac_prod_ug_C_L_day), max=max(z$Bac_prod_ug_C_L_day)))</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="gamma-probability-density" class="section level3">
 <h3>Gamma Probability Density</h3>
 <p>Plots the data similarly like the exponential function.</p>
-<pre class="plaintext"><code>gammaPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;gamma&quot;)
+<pre class="r"><code>gammaPars &lt;- fitdistr(z$Bac_prod_ug_C_L_day,&quot;gamma&quot;)
 shapeML &lt;- gammaPars$estimate[&quot;shape&quot;]
 rateML &lt;- gammaPars$estimate[&quot;rate&quot;]
 
-stat4 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour=&quot;brown&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(shape=shapeML, rate=rateML))
-p1 + stat + stat2 + stat3 + stat4</code></pre>
-<p><img src="Homework08_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+stat4 &lt;- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour=&quot;brown&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(shape=shapeML, rate=rateML))</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 <div id="beta-probability-density" class="section level3">
 <h3>Beta Probability Density</h3>
 <p>Raw data is scaled to either zero or one.</p>
-<pre class="plaintext"><code>pSpecial &lt;- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day/(max(Bac_prod_ug_C_L_day + 0.1)), y=..density..)) +
+<pre class="r"><code>pSpecial &lt;- ggplot(data=z, aes(x=Bac_prod_ug_C_L_day/(max(Bac_prod_ug_C_L_day + 0.1)), y=..density..)) +
   geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2) +
   xlim(c(0,1)) +
   geom_density(size=0.75,linetype=&quot;dotted&quot;)
@@ -364,9 +396,8 @@ betaPars &lt;- fitdistr(x=z$Bac_prod_ug_C_L_day/max(z$Bac_prod_ug_C_L_day + 0.1)
 shape1ML &lt;- betaPars$estimate[&quot;shape1&quot;]
 shape2ML &lt;- betaPars$estimate[&quot;shape2&quot;]
 
-statSpecial &lt;- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour=&quot;orchid&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(shape1=shape1ML,shape2=shape2ML))
-pSpecial + statSpecial</code></pre>
-<p><img src="Homework08_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+statSpecial &lt;- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour=&quot;orchid&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(shape1=shape1ML,shape2=shape2ML))</code></pre>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 <div id="best-fitting-distribution" class="section level2">
 <h2>Best Fitting Distribution</h2>
@@ -377,25 +408,27 @@ curve due to the way it follows the trend of the data.</p>
 <p>This code makes a randomly generated data set of 200 specimens.</p>
 <p>The code also finds the quartile ranges as well as the median and
 mean.</p>
-<pre><code>## &#39;data.frame&#39;:    1768 obs. of  2 variables:
-##  $ ID   : int  1 2 3 4 7 8 11 12 13 15 ...
-##  $ myVar: num  0.0857 1.5103 1.3596 0.6463 0.6916 ...</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1720 obs. of  2 variables:
+##  $ ID   : int  1 3 4 5 7 9 12 15 16 17 ...
+##  $ myVar: num  0.21 0.251 1.334 0.986 0.694 ...</code></pre>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## 0.000056 0.354282 0.758826 0.870057 1.244960 3.674059</code></pre>
+## 0.000533 0.355140 0.734071 0.867646 1.259622 3.242697</code></pre>
 <p>This code plots the random data set.</p>
-<pre class="plaintext"><code>p1 &lt;- ggplot(data=nd, aes(x=myVar, y=..density..)) +
+<pre class="r"><code>p1 &lt;- ggplot(data=nd, aes(x=myVar, y=..density..)) +
   geom_histogram(color=&quot;grey60&quot;,fill=&quot;cornsilk&quot;,size=0.2)
 print(p1)</code></pre>
-<p><img src="Homework08_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<p>This code XXXX</p>
-<pre class="plaintext"><code>meanML &lt;- normPars$estimate[&quot;mean&quot;]
+<p><img src="Homework08_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>This code creates the normal probability density which best fits the
+data.</p>
+<pre class="r"><code>normPars &lt;- fitdistr(nd$myVar,&quot;normal&quot;)
+meanML &lt;- normPars$estimate[&quot;mean&quot;]
 sdML &lt;- normPars$estimate[&quot;sd&quot;]
 
-xval &lt;- seq(0,max(z$Bac_prod_ug_C_L_day),len=length(z$Bac_prod_ug_C_L_day))
+xval &lt;- seq(0,max(nd$myVar),len=length(nd$myVar))
 
-stat &lt;- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour=&quot;red&quot;, n = length(z$Bac_prod_ug_C_L_day), args = list(mean = meanML, sd = sdML))
+stat &lt;- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour=&quot;red&quot;, n = length(nd$myVar), args = list(mean = meanML, sd = sdML))
 p1 + stat</code></pre>
-<p><img src="Homework08_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="Homework08_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 </div>
 

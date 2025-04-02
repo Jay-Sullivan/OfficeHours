@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ### Problem 01   
-```plaintext
+```{r, include = TRUE}
 x <- 1.1  
 a <- 2.2  
 b <- 3.3  
@@ -24,6 +24,7 @@ m <- (3*x^3 + 2*x^2 + 1)
 
 
 z <- c(y,w,m)
+rep(z)
 ```
 #### Notes:
 We have our variables x, a, and b, being assigned various numbers.  
@@ -37,17 +38,18 @@ Finally z has all the previous expression stored in it.
 ### Problem 02
 
 ##### Part A   
-```plaintext
+```{r, include = TRUE}
 prob <- c(seq(1:8), seq(from=7, to=1))
+rep(prob)
 ```
 
 ##### Part B
-```plaintext
+```{r, include = TRUE}
 test <- c(1:5)   
 rep(x=test,times=test)
 ```
 ##### Part C
-```plaintext
+```{r, include = TRUE}
 new <- seq(from=5, to=1)   
 test2 <- c(5:1)   
 rep(x=new,times=test)   
@@ -61,13 +63,14 @@ Code for part A,B,C work to produce the expected outputs for the Second part of 
 <br>
 
 ### Problem 03
-```plaintext
+```{r, include = TRUE}
 numberx <- runif(1)   
 numbery <- runif(1)   
 r <- sqrt(numberx^2 + numbery^2)   
 zero <- atan(numberx/numbery)   
 
 final <- c(r, zero)
+rep(final)
 ```
 ##### Notes:
 For problem three this program generates two random numbers for the x and y coordinates respectively. Then the r and the zero are calculated to properly use the polar coordinates.
@@ -77,7 +80,7 @@ For problem three this program generates two random numbers for the x and y coor
 <br>
 
 ### Problem 04
-```plaintext
+```{r, include = TRUE}
 queue <- c("Sheep", "fox", "owl", "ant")   
 
 
@@ -88,6 +91,7 @@ queue <- (queue[! queue%in% c("Serpent")]) #D
 queue <- (queue[! queue%in% c("owl")]) #E   
 queue <- append(queue, "Aphid", after = which(queue == "ant")) #F   
 ap <- which(queue == "Aphid") #G.   
+rep(queue)
 ```
 ##### Notes:   
 The queue contains our original animal line while each step from A-G has its own queue line. Each line at the end has the # letter that corresponds with the step its solving.
@@ -97,10 +101,11 @@ The queue contains our original animal line while each step from A-G has its own
 <br>
 
 ### Problem 05
-```plaintext
+```{r, include = TRUE}
 Rnumbers <- c(1:100)   
 
 Rvect <- which(Rnumbers %%2 !=0 & Rnumbers %%3 !=0 & Rnumbers%%7 !=0)
+rep(Rvect)
 ```
 ##### Notes:   
 Rnumbers is used to call the 1-100 list of numbers. It is then called into Rvect which checks to make sure that only numbers not divisible by 2,3, and 7 can be added to Rvect.   
