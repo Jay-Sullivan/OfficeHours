@@ -11,9 +11,9 @@
 
 <meta name="author" content="Jay Sullivan" />
 
-<meta name="date" content="2025-01-24" />
+<meta name="date" content="2025-04-09" />
 
-<title>Homework</title>
+<title>Homework10</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -266,23 +266,95 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Homework</h1>
+<h1 class="title toc-ignore">Homework10</h1>
 <h4 class="author">Jay Sullivan</h4>
-<h4 class="date">2025-01-24</h4>
+<h4 class="date">2025-04-09</h4>
 
 </div>
 
 
-<div id="links-to-my-homeworks" class="section level5">
-<h5>Links to my homeworks</h5>
-<p><a href="Homework03.html">Homework 3</a></p>
-<p><a href="Homework04.html">Homework 4</a></p>
-<p><a href="Homework05.html">Homework 5</a></p>
-<p><a href="Homework06.html">Homework 6</a></p>
-<p><a href="Homework07.html">Homework 7</a></p>
-<p><a href="Homework08.html">Homework 8</a></p>
-<p>[Homework 9]</p>
-<p><a href="Homework10.html">Homework 10</a></p>
+<div id="ggplots" class="section level3">
+<h3>GGPlots</h3>
+<pre class="r"><code>library(ggplot2) # for graphics
+library(tidyverse)
+library(tidytuesdayR) # for data set
+library(ggridges) # for ridges
+library(dplyr)
+library(tidyr)
+library(ggbeeswarm)
+library(beeswarm)
+library(ggridges)</code></pre>
+</div>
+<div id="calling-in-datasets" class="section level3">
+<h3>Calling in Datasets</h3>
+<p>This calls in our data set and assign it a name</p>
+<pre class="r"><code>tuesdata &lt;- tidytuesdayR::tt_load(&#39;2024-04-23&#39;)
+outer_space_objects &lt;- tuesdata$outer_space_objects</code></pre>
+</div>
+<div id="ridgeline-graph" class="section level2">
+<h2>Ridgeline Graph</h2>
+<pre class="r"><code>filtered_data &lt;- outer_space_objects %&gt;%
+  filter(Entity %in% c(&quot;Canada&quot;, &quot;Brazil&quot;, &quot;China&quot;, &quot;Denmark&quot;,&quot;Argentina&quot;,&quot;Chile&quot;,&quot;Colombia&quot;,&quot;Finland&quot;,&quot;France&quot;,&quot;Germany&quot;))
+# Code above is for cleaning our data so we have 10 countries to observe
+
+#The code below is for the graph
+p2 &lt;- ggplot(data=filtered_data) +
+  aes(x=Year,y=Entity,fill=num_objects) +
+  ggridges::geom_density_ridges(color=&quot;black&quot;,fill=&quot;lightblue&quot;) +
+  ggridges::theme_ridges(font_size = 14,
+                         font_family = &quot;Times New Roman&quot;,
+                         line_size = 0.5,
+                         grid = TRUE,
+                         center_axis_labels = FALSE)
+p2</code></pre>
+<p><img src="Homework10_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="bee-swarm-graph" class="section level2">
+<h2>Bee Swarm Graph</h2>
+<pre class="r"><code>filtered_data2 &lt;- outer_space_objects %&gt;%
+  filter(Entity %in% c(&quot;Canada&quot;, &quot;Brazil&quot;, &quot;China&quot;))
+# The code above filters the original data to only have the data of three countries
+
+p3 &lt;- ggplot(data=filtered_data2) +
+  aes(x=Entity,y=num_objects,color=Entity) +
+  ggbeeswarm::geom_beeswarm(method = &quot;center&quot;,size=1.5) +
+  scale_color_manual(values = c(
+    &quot;Canada&quot; = &quot;cornflowerblue&quot;, # Makes Canada Blue
+    &quot;Brazil&quot; = &quot;darkolivegreen3&quot;, # Makes Brazil Green
+    &quot;China&quot; = &quot;darkred&quot; # Makes China Red
+  )) +
+  ggridges::theme_ridges(font_size = 14, # Changes font size
+                         font_family = &quot;Times&quot;, # changes font to times
+                         line_size = 0.3,
+                         grid = TRUE,
+                         center_axis_labels = FALSE)
+# The code above creates the graph</code></pre>
+<pre class="r"><code>p3</code></pre>
+<p><img src="Homework10_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="waffle-graph" class="section level3">
+<h3>Waffle Graph</h3>
+<pre class="r"><code>filtered_data2 &lt;- outer_space_objects %&gt;%
+  filter(Entity %in% c(&quot;Canada&quot;, &quot;Brazil&quot;, &quot;Germany&quot;,&quot;Denmark&quot;))
+
+p4 &lt;- ggplot(data=filtered_data2) +
+  aes(fill = Entity, values = num_objects) +
+  waffle::geom_waffle(n_rows = 8, size = 0.33, colour = &quot;white&quot;) +
+  coord_equal() +
+  theme_void()</code></pre>
+<pre class="r"><code>p4</code></pre>
+<p><img src="Homework10_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="horrible-pie-graph" class="section level3">
+<h3>Horrible Pie Graph</h3>
+<pre class="r"><code>p5 &lt;- ggpie::ggpie(data=filtered_data2,
+                   group_key=&quot;Entity&quot;,
+                   count_type=&quot;full&quot;,
+                   label_info=&quot;ratio&quot;,
+                   label_type=&quot;circle&quot;) +
+  scale_fill_manual(values = c(&quot;purple&quot;, &quot;lightblue&quot;, &quot;yellow&quot;, &quot;darkorange&quot;))</code></pre>
+<pre class="r"><code>p5</code></pre>
+<p><img src="Homework10_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
 </div>
 
 
